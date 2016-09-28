@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        @Styles.Render("~/css/bootstrap.min.css")
+        @Styles.Render("~/css/bootstrap-glyphicons.css")
+        @Styles.Render("~/css/jquery-ui.css")
+        @Styles.Render("~/css/icheck/flat/blue.css")
+        @Styles.Render("~/css/select2.css")
+        @Styles.Render("~/css/unicorn.main.css")
+        @Styles.Render("~/css/fullcalendar.css")
+        
+        @Styles.Render("~/css/unicorn.main.css")                                
+        @Styles.Render("~/css/unicorn.grey.css")
+        @Styles.Render("~/Content/font-awesome.min.css")
+        
+
+		@*<link rel="stylesheet" href="" class="skin-color" />        *@
+        
+        <link href="~/Content/Custom.css" rel="stylesheet" />
+        <link href="~/Content/validation-errors-style.css" rel="stylesheet" />
+        
+        @* BEGIN: BEFORE MOVING THIS BLOCK TO FOOTER, FIRST CHECK IF ANY SCRIPT USING JQUERY ON THEN MIDDLE *@
+
+        @Scripts.Render("~/js/jquery.min.js")
+
+        @Scripts.Render("~/bundles/jquery");
+        @Scripts.Render("~/bundles/jqueryval");
+        @Scripts.Render("~/bundles/modernizr");
+        @Scripts.Render("~/bundles/jquerymask")
+
+        <script src='@Url.Content("~/js/excanvas.min.js")'></script>
+        <script src='@Url.Content("~/js/jquery-ui.custom.js")'></script>
+
+        <script src='@Url.Content("~/js/bootstrap.min.js")'></script>
+        <script src='@Url.Content("~/js/jquery.icheck.min.js")'></script>
+        @*<script src='@Url.Content("~/js/jquery.flot.min.js")'></script>*@
+        @*<script src='@Url.Content("~/js/jquery.flot.resize.min.js")'></script>*@
+        <script src='@Url.Content("~/js/select2.js")'></script>
+        <script src='@Url.Content("~/js/jquery.sparkline.min.js")'></script>
+        <script src='@Url.Content("~/js/fullcalendar.min.js")'></script>
+        <script src='@Url.Content("~/js/unicorn.js")'></script>
+        @*<script src='@Url.Content("~/js/unicorn.dashboard.js")'></script>*@
+        <script src='@Url.Content("~/js/jquery.datatables.min.js")' charset="iso-8859-1"></script>
+        <script src='@Url.Content("~/js/jquery.jpanelmenu.min.js")'></script>
+        <script src='@Url.Content("~/js/unicorn.tables.js")'  charset="iso-8859-1"></script>
+        <script src='@Url.Content("~/js/bootbox.min.js")'></script>
+        <script src='@Url.Content("~/js/jquery.elevateZoom-3.0.8.min.js")'></script>
+        <script src='@Url.Content("~/js/banners-zoom.js")'></script>
+        <script src='@Url.Content("~/js/Validation-Rules/summary-custom-validator.js")'></script>
+        <script src='@Url.Content("~/js/jquery.mask.js")'></script>
+
+        @* END: BEFORE MOVING THIS BLOCK TO FOOTER, FIRST CHECK IF ANY SCRIPT USING JQUERY ON THEN MIDDLE *@
+
+
+
+    </head>
+      <body>
+
+        @Html.Partial("_Header")
+
+        @Html.Partial("_Nav")
+
+        @Html.Partial("_SideBar")
+
+        <div id="content">
+
+        @RenderBody()
+       
+        </div>
+
+        @Html.Partial("_Footer")
+                
+        @RenderSection("scripts", required: false)
+
+    </body>
+</html>

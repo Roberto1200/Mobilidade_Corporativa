@@ -1,0 +1,123 @@
+﻿@using Manager.Models
+@model IPagedList<CalendarioUsuario>
+@{
+    ViewBag.Title = "Calendário";
+
+    var listdiretorias = (List<Diretoria>)ViewBag.Diretorias;
+    var listregionais = (List<Regional>)ViewBag.Regionais;
+}
+
+@Html.Partial("../Shared/LayoutLists/_Breadcrumb")
+<style>
+    .select2-container .select2-choice{width:375px;height:38px;line-height:3;}
+    .select2-container .select2-choice .select2-arrow b{background-position:0 7px;}
+</style>
+<div class="row">
+    <div class="col-12">
+
+        <div>
+            @if (ViewBag.ErrorMessage != null)
+            {
+                @Html.Raw(ViewBag.ErrorMessage)
+            }
+        </div>
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>Lista de registros cadastrados</h5>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("Index", "Calendario", FormMethod.Get))
+                {
+                    <div class="input form-group col-3">
+                        @Html.DropDownList("idDiretoria", new SelectList(listdiretorias, "id", "diretoria"), string.Empty, new { @class = "selectme selectme-diretoria" })
+                    </div>
+                    <div class="input form-group col-3">
+                        @Html.DropDownList("idRegional", new SelectList(listregionais, "id", "regional"), string.Empty, new { @class = "selectme selectme-regional" })
+                    </div>
+                    <div class="input-group col-3">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </span>
+                        @Html.TextBox("coord_lider", ViewBag.CoordLider as string, new { @class = "form-control", @placeholder = "Coordenador Líder" })
+                    </div>
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+                }
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Dir. Regional</th>
+                            <th>Ger. Regional</th>
+                            <th>Coord. Líder</th>
+                            <th>Coordenador</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            foreach (var row in Model)
+                            {
+                                <tr class="gradeX">
+                                    
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr class="gradeX">
+                                <td colspan="7" align="center">
+                                    Nenhum registro disponível
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (Model != null && Model.PageCount > 1)
+                {
+                    <div>
+                        @Html.PagedListPager(Model, pagina => Url.Action("Index", "Lembretes", new { pagina, currentFilter = ViewBag.CurrentFilter }))
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#idDiretoria").on("change", function (e) {
+
+            var id = $(this).val();
+
+            $.ajax({
+                url: '@Url.Content("~/WS/GetRegionais")',
+                data: {
+                    'idDiretoria': id
+                },
+                beforeSend: function (xhr) {
+                    $("#idRegional option").remove();
+                },
+                success: function (regionaisList) {
+                    $.each(regionaisList, function (i, element) {
+                        $('<option></option>').
+                            text(element.regional).
+                            val(element.id).
+                            appendTo('#idRegional');
+                    });
+
+                    $("#idRegional").trigger("change");
+                },
+                error: function (req, status, err) {
+                    console.log('something went wrong', status, err);
+                }
+            });
+        });
+    });
+</script>
+
+@Html.Partial("../Shared/_EditDeleteScript", "Lembretes")

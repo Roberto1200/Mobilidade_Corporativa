@@ -1,0 +1,79 @@
+﻿<div id="sidebar">
+    <!--<a href="#" class="hide"><i class="glyphicon glyphicon-home"></i> Dashboard</a>-->
+    <ul>
+
+        <!--<li><a ><span><I>MENU</I></span></a></li>-->
+
+        <li class="mnuhome clsmenu">
+            <a href="~/Home">
+                <i class="glyphicon glyphicon-home">
+                </i><span>Dashboard</span>
+            </a>
+        </li>
+
+
+
+        <li class="mnuadministradores clsmenu"><a href="~/Administradores"><i class="glyphicon glyphicon-user"></i><span>Administradores</span></a></li>
+
+        <li class="submenu">
+            <a href="#"><i class="glyphicon glyphicon-plus"></i> <span>Usuários</span> <span class="label">4</span></a>
+            <ul style="display: none;">
+                <li class="mnudiretorias clsmenu"><a href="~/Diretorias"><i class="glyphicon glyphicon-briefcase"></i><span> Diretorias</span></a></li>
+                <li class="mnuregionais clsmenu"><a href="~/Regionais"><i class="glyphicon glyphicon-tasks"></i><span> Regionais</span></a></li>
+                <li class="mnuagencias clsmenu"><a href="~/Agencias"><i class="glyphicon glyphicon-inbox"></i><span> Agências</span></a></li>
+                <li class="mnuusuarios clsmenu"><a href="~/Usuarios"><i class="glyphicon glyphicon-user"></i><span> Usuários</span></a></li>
+            </ul>
+        </li>
+
+        <li class="mnubanners clsmenu">
+            <a href='@Url.Content("~/Lembretes")'>
+                <i class="glyphicon glyphicon-tag"></i>
+                <span>Lembretes</span>
+            </a>
+        </li>
+        <li class="mnubanners clsmenu">
+            <a href='@Url.Content("~/Calendario")'>
+                <i class="glyphicon glyphicon-calendar"></i>
+                <span>Calendário</span>
+            </a>
+        </li>
+
+        <li class="mnubanners clsmenu"><a href='@Url.Content("~/Banners")'><i class="glyphicon glyphicon-th-list"></i><span>Banners</span></a></li>
+
+
+
+        @*        <li class="mnucomunicadores clsmenu"><a href="buttons.html"><i class="glyphicon glyphicon-volume-up"></i><span>Comunicador</span></a></li>
+
+            <li class="mnuforum clsmenu"><a href="interface.html"><i class="glyphicon glyphicon-list"></i><span>Fórum</span></a></li>
+
+            <li class="mnuagencias clsmenu"><a href="interface.html"><i class="glyphicon glyphicon-star"></i><span>Agências</span></a></li>
+
+            <li class="mnuagenda clsmenu"><a href="interface.html"><i class="glyphicon glyphicon-book"></i><span>Agenda</span></a></li>*@
+
+
+
+        <li><a><span><I>AGENTES</I></span></a></li>
+
+        <li class="mnucanaisdigitais clsmenu"><a href="~/CanaisDigitais"><i class="glyphicon glyphicon-unchecked"></i><span>Canais Digitais</span></a></li>
+        <li class="mnucartilhas clsmenu"><a href="~/Cartilhas"><i class="glyphicon glyphicon-book"></i><span>Cartilhas</span></a></li>
+        <li class="mnuvideos clsmenu"><a href="~/Videos"><i class="glyphicon glyphicon-facetime-video"></i><span>Vídeos</span></a></li>
+
+
+        <li><a><span><I>COORDENADORES</I></span></a></li>
+
+        @*<li class="submenu">
+            <a href="#"><i class="glyphicon glyphicon-plus"></i> <span>Agenda</span> <span class="label">2</span></a>
+            <ul style="display: none;">
+                <li class="mnuagendas clsmenu"><a href="~/Agenda"><i class="glyphicon glyphicon-briefcase"></i><span> Agendas</span></a></li>
+                <li class="mnuagendatipositems clsmenu"><a href="~/Agenda/Tipos"><i class="glyphicon glyphicon-tasks"></i><span> Tipos de itens</span></a></li>
+            </ul>
+        </li>*@
+        @*<li class="mnudocumentosregionais clsmenu"><a href="~/DocumentosRegionais"><i class="glyphicon glyphicon-align-justify"></i><span>Regionais</span></a></li>*@
+        @*<li class="mnuforum clsmenu"><a href="~/Forum"><i class="glyphicon glyphicon-align-justify"></i><span>Fórum</span></a></li>*@
+        <li class="mnurelatorios clsmenu"><a href="~/Relatorios"><i class="glyphicon glyphicon-align-justify"></i><span>Relatórios</span></a></li>
+
+        @*<li class="mnustatusequipe clsmenu"><a href="tables.html"><i class="glyphicon glyphicon-align-left"></i><span>Status Equipe</span></a></li>*@
+
+    </ul>
+
+</div>

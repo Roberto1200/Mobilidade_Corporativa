@@ -1,0 +1,21 @@
+﻿
+/** Errors message from jquery.validate **/
+
+.validation-area {
+    min-height: 24px;
+    padding: 2px 35px;
+    color: #da1212;
+}
+
+label.error, .field-validation-error {
+    color: #cc0505;
+}
+
+.input-validation-error, 
+.input-validation-error > .select2-choice {
+    border-color: #ff0000 !important;
+}
+.input-validation-error:focus {
+    border-color: #c43c35 !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px #c43c35;
+}

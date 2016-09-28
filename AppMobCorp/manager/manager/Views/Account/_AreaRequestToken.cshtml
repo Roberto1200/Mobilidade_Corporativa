@@ -1,0 +1,31 @@
+﻿@model Manager.Models.RequestTokenModel
+
+@using (Html.BeginForm("RecAdminSenha", "WS", FormMethod.Post, new { enctype = "multipart/form-data", id = "tokenform" }))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <p>Digite o token enviado ao seu endereço de e-mail para continuar com a recuperação de sua senha.</p>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+            @Html.TextBoxFor(m => m.Token, new { @class = "form-control", placeholder = "Token", id = "token", maxlength = "6" })
+            @*@Html.TextBox("tipo", "0", new { style = "display:none" })*@
+            
+            
+        </div>
+        
+        <div id="validationToken" class="validation-area" style="display:none;">
+
+        </div>
+
+        <hr />
+        
+        <div class="form-actions">
+            <div class="pull-left">
+                <a href="#" class="flip-link to-login">&laquo; Voltar ao login</a><br />
+            </div>
+            <div class="pull-right">
+                <a href="#" class="btn btn-default flip-link to-reset-password">Validar Token</a>
+            </div>
+        </div>
+    </div>
+                }

@@ -1,0 +1,159 @@
+﻿<script type="text/javascript" src='@Url.Content("~/Scripts/nicEdit-latest.js")'></script>
+<script type="text/javascript">
+ bkLib.onDomLoaded(function(){ nicEditors.allTextAreas() });
+</script>
+@model Manager.Models.CanaisDigitais_Subcat
+@{
+    List<Manager.Models.CanaisDicionarioP> Tipodepagina = new List<Manager.Models.CanaisDicionarioP>();
+    Tipodepagina.Add(new Manager.Models.CanaisDicionarioP() { id = 1, nome = "Pagina com submenus" });
+    Tipodepagina.Add(new Manager.Models.CanaisDicionarioP() { id = 2, nome = "Pagina sem submenus" });
+    Tipodepagina.Add(new Manager.Models.CanaisDicionarioP() { id = 3, nome = "Pagina html" });
+
+    List<Manager.Models.CanaisDicionarioB> Tipobanners = new List<Manager.Models.CanaisDicionarioB>();
+    Tipobanners.Add(new Manager.Models.CanaisDicionarioB() { id = 1, nome = "Pequeno Horizontal" });
+    Tipobanners.Add(new Manager.Models.CanaisDicionarioB() { id = 2, nome = "Grande Quadrado" });
+    Tipobanners.Add(new Manager.Models.CanaisDicionarioB() { id = 3, nome = "Grande Horizontal" });
+}
+
+@using (Html.BeginForm("UpdateCat", "CanaisDigitais", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "formulario1" }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.id_canal_digital)
+    @Html.HiddenFor(model=>model.nome_canal)
+    if (Model.id > 0)
+    {
+        @Html.HiddenFor(model => model.imagem)
+    }
+    string tipo_de_pagina_select = "hidden";
+    if (Model.id_tipo_pagina <= 1)
+    {
+        tipo_de_pagina_select = "none";
+    }
+    else
+    {
+        tipo_de_pagina_select = "visible";
+    }
+
+    <div style="height:15px"></div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Nome</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+
+            @Html.TextBoxFor(model => model.nome, new { @class = "form-control input-sm", maxlength = "30" })
+            @Html.ValidationMessageFor(model => model.nome)
+
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Chamada</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.chamada, new { @class = "form-control input-sm" })
+            @Html.ValidationMessageFor(model => model.chamada)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Tipo de Banner</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.DropDownListFor(model => model.id_tipo_banner_destaque, new SelectList(Tipobanners, "id", "nome"), string.Empty, new { @class = "selectme", id = "tipo_banner_destaque", @onchange="trocartamanho(this)" })
+            @Html.ValidationMessageFor(model => model.id_tipo_banner_destaque)
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Tipo de Página</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.DropDownListFor(model => model.id_tipo_pagina, new SelectList(Tipodepagina, "id", "nome"), string.Empty, new { @class = "selectme", id = "tipo_pagina", @onchange= "mostrarConteudo()" })
+            @Html.ValidationMessageFor(model => model.id_tipo_pagina)
+        </div>
+    </div>
+    <div class="form-group" id="conteudo" style="visibility:@tipo_de_pagina_select">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Conteúdo</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.TextAreaFor(model => model.conteudo, new { @class = "selectme", id = "tipo_pagina_conteudo" })
+                @Html.ValidationMessageFor(model => model.conteudo)
+            </div>
+        </div>
+    <div class="form-group">
+        <div style="white-space:nowrap"><label class="col-sm-3 col-md-3 col-lg-2 control-label">Fazer upload de imagem</label></div>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+
+            @Html.TextBoxFor(model => model.file, new { id = "fupload", type = "file", onchange = "PreviewImage()", accept = ".png,.jpg,.jpeg" })
+            <div id="TextotamanhoDoArquivo"></div>
+            @Html.ValidationMessageFor(model => model.file)
+            <div id="uploadPreview" data-zoom-image='@Url.Content("~/Upload/Banners/"+@Model.imagem)'
+                 style="width:300px;
+                    margin-top:10px; border:2px groove whitesmoke;
+                    background-repeat:no-repeat;
+                    background-position:center; height:150px;
+                    background-size:contain;
+                    background-image:url('@Url.Content("~/Upload/Banners/"+@Model.imagem)')">
+            </div>
+
+            <script>
+                    $(document).ready(function () {
+                        $("#fupload").rules("add", {
+                            filesize: 10,
+                            imgdimension: [2048, 620]
+                        });
+                    });
+            </script>
+
+
+        </div>
+    </div>
+    <div class="form-actions">
+        <button id="Salvar" type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        <a class="btn btn-warning" href="~/CanaisDigitais/Subcategoria/@Model.id_canal_digital">Cancelar</a>
+    </div>
+    <script>        
+        function mostrarConteudo () {
+            var e = document.getElementById("conteudo");
+                if ($("#tipo_pagina").val() > 1) {
+                    e.style.visibility = 'visible';
+                }
+                else if ($("#tipo_pagina").val() == 1) {
+                    e.style.visibility = 'hidden';
+                    document.getElementById("tipo_pagina_conteudo").value = "";
+                }
+                
+        };
+        function trocartamanho(tipo_banner_destaque) {
+            var tamanho;
+            var selectedValue = parseInt(tipo_banner_destaque.value);
+
+            $("#fupload").rules("remove", "imgdimension");
+
+            switch (selectedValue) {
+                case 1:
+                    tamanho = "arquivo deve estar na dimensão 760x335 no formato JPG ou PNG<br />";
+                    $("#fupload").rules("add", {
+                        imgdimension: [760, 335]
+                    });
+                    break;
+                case 2:
+                    tamanho = "arquivo deve estar na dimensão 760x670 no formato JPG ou PNG<br />";
+                    $("#fupload").rules("add", {
+                        imgdimension: [760, 670]
+                    });
+                    break;
+                case 3:
+                    tamanho = "arquivo deve estar na dimensão 2048x620 no formato JPG ou PNG<br />";
+                    $("#fupload").rules("add", {
+                        imgdimension: [2048, 620]
+                    });
+                    break;
+            }
+            var myDiv = document.getElementById("TextotamanhoDoArquivo");
+            myDiv.innerHTML = tamanho;
+        };
+        
+
+    </script>
+}

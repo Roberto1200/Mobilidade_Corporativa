@@ -1,0 +1,53 @@
+﻿@model Manager.Models.Forum_Canal
+
+@{
+    
+    ViewBag.Title = "Fórum - Canais";
+    List<Manager.Models.Forum_Canal> ForunList = (List<Manager.Models.Forum_Canal>)ViewBag.Data;
+}
+
+
+    <div id="content-header">
+        <h1>@ViewBag.Title</h1>
+       
+    </div>
+
+    <div id="breadcrumb">
+        <a href="~/Home" title="Ir para página inicial" class="tip-bottom"><i class="glyphicon glyphicon-home"></i>Home</a>
+        <a href="#" class="current">@ViewBag.Title</a>
+    </div>
+@Html.Partial("../Shared/_ValidatorSummaryBox")
+
+
+<div class="row">
+    <div class="col-12">
+
+
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>@ViewBag.Operacao</h5>
+            </div>
+            <div class="widget-content nopadding">
+                
+                @Html.Partial("_Form",Model)
+                 
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+   
+    $('.clsmenu').removeClass('active')
+    $('.mnucartilhas').addClass('active')    
+</script>
+
+@Html.Partial("../Shared/_EditDeleteScript","Forum")

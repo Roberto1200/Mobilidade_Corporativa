@@ -1,0 +1,71 @@
+﻿@model Manager.Models.Relatorios
+
+@using (Html.BeginForm("Update", "Relatorios", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.arquivo)
+    @Html.HiddenFor(model => model.data)
+    @Html.HiddenFor(model => model.size)
+    @Html.HiddenFor(model => model.id)
+    <div style="height:15px"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Título</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.titulo, new { @class = "form-control input-sm", maxlength = "50" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.titulo)
+        </div>
+    </div>
+
+
+    if (Model.id != 0) {
+    <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Arquivo Atual</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">            
+                @*<input type="file" class="form-control input-sm" name="file">*@
+                
+                @Html.TextBoxFor(model => model.arquivo, new { @class = "form-control input-sm", @readonly = "readonly" })
+
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#pdfFile").rules("remove", "required");
+            });
+        </script>
+    }
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Arquivo</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">            
+                @*<input type="file" class="form-control input-sm" name="file">*@
+                
+                @Html.TextBoxFor(model => model.file, new { type = "file", accept = ".pdf", id = "pdfFile" })
+                Tamanho do arquivo deve ser no máximo de 20MB no formato PDF.<br>
+                @Html.ValidationMessageFor(model => model.file)
+
+            </div>
+
+            <script>
+            $(document).ready(function () {
+                $("#pdfFile").rules("add", {
+                    filesize: 20,
+                    accept: ".pdf"
+                });
+            });
+            </script>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Ativo</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+
+                @Html.CheckBoxFor(model => model.status, new { @class = "icheckbox_flat-blue" })
+
+            </div>
+        </div>
+
+     <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+         <a class="btn btn-warning" href="~/Relatorios">Cancelar</a>
+    </div>
+}

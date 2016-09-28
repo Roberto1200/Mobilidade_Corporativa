@@ -1,0 +1,311 @@
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Manager.dll.config
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Manager.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Manager.pdb
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Antlr3.Runtime.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\BotDetect.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\BotDetect.Web.Mvc.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.Core.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.Core.UI.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.InfoCard.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.InfoCard.UI.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth.Common.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth.ServiceProvider.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.AuthorizationServer.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.UI.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.ClientAuthorization.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.ResourceServer.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.UI.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.UI.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.UI.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenIdInfoCard.UI.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenIdOAuth.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\EPPlus.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Excel.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\FileHelpers.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Newtonsoft.Json.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\PagedList.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\PagedList.Mvc.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Net.Http.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Net.Http.Formatting.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Net.Http.WebRequest.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Helpers.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Http.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Http.WebHost.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Mvc.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Optimization.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Razor.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.WebPages.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.WebPages.Razor.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\WebGrease.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\WebMatrix.Data.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\WebMatrix.WebData.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Org.Mentalis.Security.Cryptography.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Mono.Math.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Antlr3.Runtime.pdb
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.Core.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.Core.UI.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.InfoCard.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.InfoCard.UI.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth.Common.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth.ServiceProvider.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.AuthorizationServer.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.UI.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.ClientAuthorization.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OAuth2.ResourceServer.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.UI.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.UI.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenId.UI.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenIdInfoCard.UI.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\DotNetOpenAuth.OpenIdOAuth.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\EPPlus.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Excel.pdb
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\FileHelpers.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Newtonsoft.Json.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\PagedList.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\PagedList.Mvc.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Net.Http.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Net.Http.Formatting.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Net.Http.WebRequest.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Helpers.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Http.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Http.WebHost.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Mvc.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.Razor.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.WebPages.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\System.Web.WebPages.Razor.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\WebMatrix.Data.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\WebMatrix.WebData.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Org.Mentalis.Security.Cryptography.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\bin\Mono.Math.xml
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\obj\Debug\Manager.dll
+C:\Users\ADMIN\Documents\bradesco.net\manager\manager\obj\Debug\Manager.pdb
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Manager.dll.config
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Manager.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Manager.pdb
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Antlr3.Runtime.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\BotDetect.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\BotDetect.Web.Mvc.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.Core.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.Core.UI.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.InfoCard.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.InfoCard.UI.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.Common.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.ServiceProvider.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.AuthorizationServer.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.UI.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.ClientAuthorization.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.ResourceServer.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.UI.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.UI.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.UI.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenIdInfoCard.UI.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenIdOAuth.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\EPPlus.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Excel.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\FileHelpers.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Newtonsoft.Json.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\PagedList.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\PagedList.Mvc.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Net.Http.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Net.Http.Formatting.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Net.Http.WebRequest.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Helpers.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Http.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Http.WebHost.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Mvc.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Optimization.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Razor.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.WebPages.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.WebPages.Razor.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\WebGrease.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\WebMatrix.Data.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\WebMatrix.WebData.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Org.Mentalis.Security.Cryptography.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Mono.Math.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Antlr3.Runtime.pdb
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.Core.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.Core.UI.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.InfoCard.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.InfoCard.UI.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.Common.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.ServiceProvider.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.AuthorizationServer.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.UI.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.ClientAuthorization.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.ResourceServer.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.UI.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.UI.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.UI.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenIdInfoCard.UI.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenIdOAuth.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\EPPlus.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Excel.pdb
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\FileHelpers.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Newtonsoft.Json.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\PagedList.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\PagedList.Mvc.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Net.Http.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Net.Http.Formatting.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Net.Http.WebRequest.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Helpers.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Http.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Http.WebHost.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Mvc.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.Razor.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.WebPages.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\System.Web.WebPages.Razor.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\WebMatrix.Data.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\WebMatrix.WebData.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Org.Mentalis.Security.Cryptography.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\bin\Mono.Math.xml
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\obj\Debug\manager.csprojResolveAssemblyReference.cache
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\obj\Debug\Manager.dll
+C:\Users\Ortonalto\Desktop\AppMobCorp\manager\manager\obj\Debug\Manager.pdb
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Manager.dll.config
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Manager.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Manager.pdb
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Antlr3.Runtime.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\BotDetect.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\BotDetect.Web.Mvc.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.Core.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.Core.UI.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.InfoCard.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.InfoCard.UI.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.Common.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.ServiceProvider.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.AuthorizationServer.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.UI.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.ClientAuthorization.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.ResourceServer.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.UI.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.UI.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.UI.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenIdInfoCard.UI.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenIdOAuth.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\EPPlus.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Excel.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\FileHelpers.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Newtonsoft.Json.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\PagedList.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\PagedList.Mvc.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Net.Http.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Net.Http.Formatting.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Net.Http.WebRequest.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Helpers.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Http.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Http.WebHost.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Mvc.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Optimization.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Razor.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.WebPages.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.WebPages.Razor.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\WebGrease.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\WebMatrix.Data.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\WebMatrix.WebData.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Org.Mentalis.Security.Cryptography.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Mono.Math.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Antlr3.Runtime.pdb
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.Core.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.Core.UI.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.InfoCard.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.InfoCard.UI.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.Common.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth.ServiceProvider.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.AuthorizationServer.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.Client.UI.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.ClientAuthorization.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OAuth2.ResourceServer.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.Provider.UI.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.RelyingParty.UI.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenId.UI.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenIdInfoCard.UI.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\DotNetOpenAuth.OpenIdOAuth.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\EPPlus.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Excel.pdb
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\FileHelpers.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Newtonsoft.Json.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\PagedList.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\PagedList.Mvc.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Net.Http.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Net.Http.Formatting.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Net.Http.WebRequest.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Helpers.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Http.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Http.WebHost.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Mvc.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.Razor.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.WebPages.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\System.Web.WebPages.Razor.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\WebMatrix.Data.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\WebMatrix.WebData.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Org.Mentalis.Security.Cryptography.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\bin\Mono.Math.xml
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\obj\Debug\manager.csprojResolveAssemblyReference.cache
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\obj\Debug\Manager.dll
+C:\Users\Ortonalto\Desktop\Mobilidade Corporativa\AppMobCorp\manager\manager\obj\Debug\Manager.pdb

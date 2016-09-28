@@ -1,0 +1,387 @@
+/*
+CREATE TABLE TipoEvento
+(
+	idTipoEvento INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	Nome VARCHAR(60) NOT NULL
+)
+
+GO
+
+CREATE TABLE Evento
+(
+	idEvento INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	idAgencia INT NOT NULL,
+	idTipoEvento INT NOT NULL,
+	idUsuario INT NOT NULL,
+	Responsavel VARCHAR(60) NOT NULL,
+	DataEvento DATETIME NOT NULL,
+	DataCriacao DATETIME NOT NULL,
+	Observacao VARCHAR(200),
+	Excluido BIT NOT NULL DEFAULT(0)
+)
+
+GO
+
+CREATE TABLE ListaPresenca
+(
+	idListaPresenca INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	idUsuario INT NOT NULL,
+	idEvento INT NOT NULL,
+	Nome VARCHAR(60),
+	Email VARCHAR(100),
+	Excluido BIT NOT NULL DEFAULT(0),
+	Presenca BIT NOT NULL DEFAULT(0)
+)
+
+GO
+
+CREATE TABLE EventoFeedBack
+(
+	idEventoFeedBack INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	idEvento INT NOT NULL,
+	Observacao VARCHAR(200)
+)
+
+GO
+
+
+ALTER PROCEDURE [dbo].[PC_SEL_CALENDARIO_EVENTO]
+	@ID INT = NULL,
+	@IDAGENCIA INT = NULL
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT
+		EV.idEvento,
+		EV.idAgencia,
+		AG.agencia,
+		EV.idUsuario,
+		USR.nome,
+		TE.idTipoEvento,
+		TE.Nome AS NomeTipoEvento,
+		EV.Responsavel,
+		EV.DataEvento,
+		EV.DataCriacao,
+		EV.Observacao,
+		EFB.idEventoFeedBack,
+		EFB.Observacao AS ObservacaoFeedBack,
+		EV.Excluido
+	FROM
+			   Evento EV
+	INNER JOIN agencias AG ON AG.id = EV.idAgencia
+	INNER JOIN TipoEvento TE ON TE.idTipoEvento = EV.idTipoEvento
+	INNER JOIN usuarios USR ON USR.id = EV.idUsuario
+	LEFT JOIN EventoFeedBack EFB ON EFB.idEvento = EV.idEvento
+	WHERE
+		USR.id = (CASE WHEN @ID IS NULL THEN USR.id ELSE @ID END)
+	AND AG.id = (CASE WHEN @IDAGENCIA IS NULL THEN AG.id ELSE @IDAGENCIA END)
+
+END
+
+GO
+
+
+
+CREATE PROCEDURE [dbo].[PC_SEL_CALENDARIO_EVENTO_LISTA_PRESENCA] 
+	@ID INT = NULL
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT
+		LP.idListaPresenca,
+		LP.idUsuario,
+		USR.nome,
+		LP.Email,
+		LP.Excluido,
+		LP.Presenca
+	FROM
+		ListaPresenca LP
+		INNER JOIN usuarios USR ON USR.id = LP.idUsuario
+	WHERE
+		LP.idEvento = (CASE WHEN @ID IS NULL THEN LP.idEvento ELSE @ID END)
+END
+
+GO
+
+
+ALTER PROCEDURE [dbo].[PC_SEL_CALENDARIO_EVENTO_FEEDBACK] 
+	@ID INT = NULL
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT
+		idFeedBack,
+		idEvento,
+		Observacao
+	FROM
+		FeedBack
+	WHERE idEvento = (CASE WHEN @ID IS NULL THEN idEvento ELSE @ID END)
+
+END
+
+GO
+
+CREATE PROCEDURE [dbo].[PC_SEL_CALENDARIO_TIPO_EVENTO]
+	@ID INT = NULL
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT
+		idTipoEvento,
+		Nome
+	FROM
+		TipoEvento
+	WHERE
+		idTipoEvento = (CASE WHEN @ID IS NULL THEN idTipoEvento ELSE @ID END)
+
+END
+
+GO
+
+ALTER PROCEDURE [dbo].[PC_IU_CALENDARIO_EVENTO]
+	@IDEVENTO INT = 0,
+	@IDAGENCIA INT,
+	@IDTIPOEVENTO INT,
+	@CODFUNC VARCHAR(30),
+	@RESPONSAVEL VARCHAR(60),
+	@DATAEVENTO DATETIME
+AS
+BEGIN
+
+	DECLARE @IDUSUARIO INT;
+	SET @IDUSUARIO = (SELECT TOP(1) id FROM usuarios WHERE cod_funcional = @CODFUNC)
+
+	IF(@IDEVENTO > 0)
+	BEGIN
+		UPDATE Evento SET
+			idAgencia = @IDAGENCIA,    
+			idTipoEvento = @IDTIPOEVENTO,
+			idUsuario = @IDUSUARIO,
+			Responsavel = @RESPONSAVEL,
+			DataEvento = CONVERT(DATETIME, @DATAEVENTO)
+		WHERE
+			idEvento = @IDEVENTO
+	END
+	ELSE
+	BEGIN
+		INSERT INTO Evento(
+			idAgencia,
+			idTipoEvento,
+			idUsuario,
+			Responsavel,
+			DataEvento,
+			DataCriacao)
+		VALUES(
+			@IDAGENCIA,
+			@IDTIPOEVENTO,
+			@IDUSUARIO,
+			@RESPONSAVEL,
+			CONVERT(DATETIME, @DATAEVENTO),
+			GETDATE())
+	END
+
+END
+
+GO
+
+ALTER PROCEDURE [dbo].[PC_SEL_CALENDARIO_EVENTO_EXIST]
+	@CODFUNC VARCHAR(60),
+	@DATAEVENTO DATETIME
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+	DECLARE @IDUSUARIO INT;
+	SET @IDUSUARIO = (SELECT TOP(1) id FROM usuarios WHERE cod_funcional = @CODFUNC)
+
+	SELECT COUNT(idEvento) FROM Evento WHERE DataEvento = CONVERT(DATETIME, @DATAEVENTO) AND idUsuario = @IDUSUARIO
+
+END
+
+GO
+
+CREATE PROCEDURE [dbo].[PC_EXCLUIR_CALENDARIO_EVENTO]
+	@CODFUNC VARCHAR(60),
+	@IDEVENTO DATETIME
+AS
+BEGIN
+
+	DECLARE @IDUSUARIO INT;
+	SET @IDUSUARIO = (SELECT TOP(1) id FROM usuarios WHERE cod_funcional = @CODFUNC)
+
+	UPDATE Evento SET Excluido = 1 WHERE idEvento = @IDEVENTO AND idUsuario = @IDUSUARIO
+
+END
+
+GO
+
+ALTER PROCEDURE [dbo].[PC_IU_CALENDARIO_EVENTO_FEEDBACK]
+	@IDEVENTO INT,
+	@OBSERVACAO VARCHAR(60)
+AS
+BEGIN
+
+	DECLARE @IDEVENTOFEEDBACK INT = NULL;
+	SET @IDEVENTOFEEDBACK = (SELECT TOP 1 idEventoFeedBack FROM EventoFeedBack WHERE idEvento = @IDEVENTO)
+
+	IF(@IDEVENTOFEEDBACK IS NOT NULL)
+	BEGIN
+		UPDATE EventoFeedBack SET
+			Observacao = @OBSERVACAO
+		WHERE
+			idEventoFeedBack = @IDEVENTOFEEDBACK
+	END
+	ELSE
+	BEGIN
+		INSERT INTO EventoFeedBack(
+			idEvento,
+			Observacao)
+		VALUES(
+			@IDEVENTO,
+			@OBSERVACAO)
+	END
+
+END
+
+GO
+
+ALTER PROCEDURE [dbo].[PC_EXCLUIR_CALENDARIO_EVENTO_FEEDBACK]
+	@IDEVENTOFEEDBACK INT
+AS
+BEGIN
+	
+	UPDATE EventoFeedBack SET Excluido = 1 WHERE idEVentoFeedBack = @IDEVENTOFEEDBACK
+
+END
+
+GO
+
+CREATE PROCEDURE [dbo].[PC_EXCLUIR_LISTA_PRESENCA]
+	@IDEVENTO INT
+AS
+BEGIN
+
+	DELETE FROM ListaPresenca WHERE idEvento = @IDEVENTO
+
+END
+
+GO
+
+ALTER PROCEDURE [dbo].[PC_IU_LISTA_PRESENCA]
+	@IDEVENTO INT,
+	@CODFUNC VARCHAR(60),
+	@EMAIL VARCHAR(60) = NULL,
+	@PRESENCA BIT,
+	@NOME VARCHAR(60)
+AS
+BEGIN
+	
+	DECLARE @IDUSUARIO INT;
+	SET @IDUSUARIO = (SELECT TOP(1) id FROM usuarios WHERE cod_funcional = @CODFUNC)
+
+	INSERT INTO ListaPresenca(idUsuario,idEvento,Email,Presenca,Nome) VALUES (@IDUSUARIO,@IDEVENTO,@EMAIL,@PRESENCA,@NOME)
+
+END
+
+GO
+
+ALTER PROCEDURE [dbo].[PC_SEL_LISTA_PRESENCA]
+	@IDEVENTO INT
+AS
+BEGIN
+
+	SELECT
+		LP.idUsuario, 
+		LP.idEvento, 
+		LP.Email,
+		USR.nome,
+		USR.cod_funcional,
+		LP.Presenca
+	FROM 
+		ListaPresenca LP
+	INNER JOIN usuarios USR ON USR.id = LP.idUsuario
+	WHERE
+		LP.idEvento = @IDEVENTO
+
+END
+
+GO
+
+
+ALTER PROCEDURE [dbo].[PC_SEL_AGENCIA_FEEDBACK_USUARIO]
+	@DATAINICIAL DATE = NULL,
+	@DATAFINAL DATE = NULL,
+	@IDAGENCIA INT = NULL,
+	@RESPONSAVEL VARCHAR(60) = NULL,
+	@IDTIPOEVENTO INT = NULL
+AS
+BEGIN
+	SELECT
+		EV.idEvento,
+		EV.DataEvento,
+		EV.idTipoEvento,
+		TE.Nome AS NomeTipoEvento,
+		EV.Responsavel,
+		AG.id AS idAgencia,
+		AG.agencia,
+		EFB.idEventoFeedBack
+	FROM
+			   Evento EV
+	INNER JOIN TipoEvento TE ON TE.idTipoEvento = EV.idTipoEvento
+	INNER JOIN agencias AG ON AG.id = EV.idAgencia
+	LEFT JOIN EventoFeedBack EFB ON EV.idEvento = EFB.idEvento
+	WHERE
+		CONVERT(DATE, EV.DataEvento) BETWEEN
+							(CASE WHEN @DATAINICIAL IS NULL THEN CONVERT(DATE, EV.DataEvento) ELSE (CONVERT(DATE, @DATAINICIAL)) END)
+						AND
+							(CASE WHEN @DATAFINAL IS NULL THEN CONVERT(DATE, EV.DataEvento) ELSE (CONVERT(DATE, @DATAFINAL)) END)
+	AND AG.id = (CASE WHEN @IDAGENCIA IS NULL THEN AG.id ELSE @IDAGENCIA END)
+	AND EV.Responsavel = (CASE WHEN @RESPONSAVEL IS NULL THEN EV.Responsavel ELSE @RESPONSAVEL END)
+	AND EV.idTIpoEvento = (CASE WHEN @IDTIPOEVENTO IS NULL THEN EV.idTipoEvento ELSE @IDTIPOEVENTO END)
+END
+
+GO
+
+
+ALTER PROCEDURE [dbo].[PC_SEL_AGENCIA_FEEDBACK]
+	@IDEVENTO INT
+AS
+BEGIN
+	SELECT TOP 1
+		EV.idEvento,
+		EFB.idEventoFeedBack,
+		AG.id AS idAgencia,
+		AG.agencia,
+		TE.idTipoEvento,
+		TE.Nome AS NomeTipoEvento,
+		EV.Responsavel,
+		USR.id AS idUsuario,
+		USR.nome AS NomeUsuario,
+		EFB.Observacao,
+		EV.DataEvento
+	FROM
+			   Evento EV
+	INNER JOIN agencias AG ON AG.id = EV.idAgencia
+	INNER JOIN usuarios USR ON USR.id = EV.idUsuario
+	INNER JOIN TipoEvento TE ON TE.idTipoEvento = EV.idTipoEvento
+	INNER JOIN EventoFeedBack EFB ON EFB.idEvento = EV.idEvento
+	WHERE
+		EV.Excluido = 0
+	AND EV.idEvento = @IDEVENTO
+END
+
+GO
+*/
+
+--PC_SEL_CALENDARIO_EVENTO
+--SELECT * FROM usuarios WHERE id <> 4
+
+--PC_SEL_AGENCIA_FEEDBACK
+
+SELECT * FROM ListaPresenca
+

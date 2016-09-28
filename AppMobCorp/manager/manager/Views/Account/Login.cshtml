@@ -1,0 +1,36 @@
+﻿@using BotDetect.Web.Mvc;
+@model Manager.Models.LoginModel
+@{
+    Manager.Models.LoginModel modelo = new Manager.Models.LoginModel();
+    //modelo = ViewBag.Modelo;
+    ViewBag.Title = "Log in";
+    @Styles.Render("~/css/unicorn.login.css");
+    @Styles.Render("~/Content/Custom.css");
+}
+
+<style>
+    ul, menu, dir {
+        display: block;
+        list-style-type: none;
+        -webkit-margin-after: 0px;
+        -webkit-margin-before: 0px;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-padding-start: 0px;
+        text-align: left;
+    }
+</style>
+<div id="container">
+
+    <div id="logo">
+        <img src="~/img/logo.png" alt="" />
+    </div>
+
+    <div id="loginbox">
+              @Html.Partial("_AreaLogin")
+              @Html.Partial("_AreaForgotPassword", new Manager.Models.ForgotPasswordModel())
+              @Html.Partial("_AreaRequestToken", new Manager.Models.RequestTokenModel())
+              @Html.Partial("_AreaResetPassword", new Manager.Models.ResetPasswordModel())
+
+    </div>
+</div>

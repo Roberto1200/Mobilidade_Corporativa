@@ -1,0 +1,52 @@
+﻿<div class="row">
+    <div id="footer" class="col-12">
+         &copy; @DateTime.Now.Year.ToString() PIXIT <a href="https://www.pixit.com.br/">PIXIT.COM.BR</a>
+    </div>
+</div>
+
+@{
+    var controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+    var menuClass = String.Format(".mnu{0}", controllerName);
+}
+    
+    <script>
+        $('.selectme.selectme-diretoria').select2({placeholder: "Selecione uma diretoria"});
+        $('.selectme.selectme-regional').select2({placeholder: "Selecione uma regional"});
+
+        $('.selectme').select2({
+            placeholder: "-- Selecione --"
+        });
+
+        $('.clsmenu').removeClass('active');
+        $("@menuClass").addClass('active');
+
+        $('.datepicker').datepicker({ inline: true });
+
+        $(document).on('click', '#linkLogOut', function (e) {
+            e.preventDefault();
+            bootbox.confirm({
+                buttons: {
+                    cancel: {
+                        label: 'Cancelar',
+                        className: 'btn-default'
+                    },
+                    confirm: {
+                        label: 'OK',
+                        className: 'btn-danger'
+                    },
+                },
+                message: 'Tem certeza de sair do sistema?',
+                callback: function (result) {
+                    if (result == true) {
+                        window.location.href = '@Url.Content("~/Account/Logout")';
+                    }
+
+                },
+                title: "Atenção",
+            });
+
+        });
+    </script>
+
+    
+

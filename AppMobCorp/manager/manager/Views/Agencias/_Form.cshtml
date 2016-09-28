@@ -1,0 +1,41 @@
+﻿@model Manager.Models.Agencias
+
+@{
+    List<Manager.Models.Regional> listRegionais = (List<Manager.Models.Regional>)ViewBag.Regionais;
+}
+
+@using (Html.BeginForm("Update", "Agencias", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "frmAgencias" }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    <div style="height:15px"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Nome</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.agencia, new { @class = "form-control input-sm", maxlength = "50" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.agencia)
+        </div>
+    </div>
+
+    <div class="form-group" id="divmultiple">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Diretoria - Regional</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.DropDownListFor(model => model.id_regional, new SelectList(listRegionais, "id", "diretoria_regional"), string.Empty, new { @class = "selectme", style = "width:80%", id = "id_regionais" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.id_regional)
+        </div>
+    </div>
+
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        <a class="btn btn-warning" href="~/Agencias">Cancelar</a>
+    </div>
+}

@@ -1,0 +1,30 @@
+@model Manager.Models.Forum_Canal_Topico
+
+@using (Html.BeginForm("UpdateTopicos", "Forum", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "formulario1" }))
+{
+    string pai = Url.RequestContext.RouteData.Values["id"].ToString();
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.id_canal)
+    
+
+
+
+    <div style="height:15px"></div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Titulo</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+
+            @Html.TextBoxFor(model => model.titulo, new { @class = "form-control input-sm" })
+            @Html.ValidationMessageFor(model => model.titulo)
+
+
+        </div>
+    </div>
+    <div class="form-actions">
+        <button id="Salvar" type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        <a class="btn btn-warning" href="~/Forum/Topicos/@pai">Cancelar</a>
+    </div>
+}

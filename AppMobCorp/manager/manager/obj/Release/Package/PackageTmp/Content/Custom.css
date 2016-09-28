@@ -1,0 +1,31 @@
+﻿.btn {
+    display: inline-block;
+    padding:2px ;
+    padding-left:4px;padding-right:4px;
+    margin-bottom: 0;
+    font-size: 14px;
+     font-weight: 100; 
+     line-height: 1.428571429; 
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+#sidebar {
+    top:-20px;
+}
+
+#header {
+    top:-20px;
+}
+
+#content {
+    top:-20px;
+}
+
+
+#loginbox {
+    height: 290px; 
+}

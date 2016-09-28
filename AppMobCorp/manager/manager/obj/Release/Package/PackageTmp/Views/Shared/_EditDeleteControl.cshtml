@@ -1,0 +1,89 @@
+﻿@model string
+@{
+    string[] verificar = Model.Split(',');
+
+    if (verificar[2] == "CanaisDigitais")
+    {
+        <button class="btn btn-success btn-sm" onclick="Editar(@verificar[0],@verificar[1])">
+            <span class="visible-md visible-lg"><i class="fa fa-pencil"></i> Editar</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-pencil"></i></span>
+        </button>
+    }
+    else if (verificar[2] == "Cat")
+    {
+        <button class="btn btn-success btn-sm" onclick="EditarCat(@verificar[0],@verificar[1])">
+            <span class="visible-md visible-lg"><i class="fa fa-pencil"></i> Editar</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-pencil"></i></span>
+        </button>
+        <a href="#" id="bootbox-confirm" onclick="ConfirmarCat(@verificar[0],@verificar[1])" class="btn btn-danger">
+            <span class="visible-md visible-lg"><i class="fa fa-remove"></i> Excluir</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-remove"></i></span>
+        </a>
+    }
+    else if (verificar[2] == "Cont")
+    {
+        <button class="btn btn-success btn-sm" onclick="EditarCont(@verificar[0],@verificar[1])">
+            <span class="visible-md visible-lg"><i class="fa fa-pencil"></i> Editar</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-pencil"></i></span>
+        </button>
+        <a href="#" id="bootbox-confirm" onclick="ConfirmarCont(@verificar[0],@verificar[1])" class="btn btn-danger">
+            <span class="visible-md visible-lg"><i class="fa fa-remove"></i> Excluir</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-remove"></i></span>
+        </a>
+    }
+    else if (verificar[2] == "ForumCanal")
+    {
+        <button class="btn btn-success btn-sm" onclick="EditarForumCanal(@verificar[0],@verificar[1])">
+            <span class="visible-md visible-lg"><i class="fa fa-pencil"></i> Editar</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-pencil"></i></span>
+        </button>
+        <a href="#" id="bootbox-confirm" onclick="ConfirmarForumCanal(@verificar[0])" class="btn btn-danger">
+            <span class="visible-md visible-lg"><i class="fa fa-remove"></i> Excluir</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-remove"></i></span>
+        </a>
+    }
+    else if (verificar[2] == "Topicos")
+    {
+        <button class="btn btn-success btn-sm" onclick="EditarForumTopicos(@verificar[0],@verificar[1])">
+            <span class="visible-md visible-lg"><i class="fa fa-pencil"></i> Editar</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-pencil"></i></span>
+        </button>
+        <a href="#" id="bootbox-confirm" onclick="ConfirmarForumTopicos(@verificar[0],@verificar[1])" class="btn btn-danger">
+            <span class="visible-md visible-lg"><i class="fa fa-remove"></i> Excluir</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-remove"></i></span>
+        </a>
+    }
+    else if (verificar[2] == "Posts")
+    {
+        <button class="btn btn-success btn-sm" onclick="EditarForumPosts(@verificar[0],@verificar[1])">
+            <span class="visible-md visible-lg"><i class="fa fa-pencil"></i> Editar</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-pencil"></i></span>
+        </button>
+        <a href="#" id="bootbox-confirm" onclick="ConfirmarForumPosts(@verificar[0],@verificar[1])" class="btn btn-danger">
+            <span class="visible-md visible-lg"><i class="fa fa-remove"></i> Excluir</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-remove"></i></span>
+        </a>
+    }
+    else if (verificar[2] == "AgendaItens")
+    {
+        <button class="btn btn-success btn-sm" onclick="EditarAgendaTipos(@verificar[0])">
+            <span class="visible-md visible-lg"><i class="fa fa-pencil"></i> Editar</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-pencil"></i></span>
+        </button>
+        <a href="#" id="bootbox-confirm" onclick="ConfirmarAgendaTipos(@verificar[0])" class="btn btn-danger">
+            <span class="visible-md visible-lg"><i class="fa fa-remove"></i> Excluir</span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-remove"></i></span>
+        </a>
+    }
+    else
+    {
+        <button class="btn btn-success btn-sm" onclick="Editar(@verificar[0])">
+            <span class="visible-md visible-lg"><span class="visible-md visible-lg"><i class="fa fa-pencil"></i> Editar</span></span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-pencil"></i></span>
+        </button>
+        <a href="#" id="bootbox-confirm" onclick="Confirmar(@verificar[0])" class="btn btn-danger">
+            <span class="visible-md visible-lg"><span class="visible-md visible-lg"><i class="fa fa-remove"></i> Excluir</span></span>
+            <span class="hidden-md hidden-lg"><i class="fa fa-remove"></i></span>
+        </a>
+    }
+}

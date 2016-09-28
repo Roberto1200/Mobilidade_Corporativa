@@ -1,0 +1,100 @@
+﻿@model Manager.Models.Lembretes
+@{
+    Html.EnableClientValidation(true);
+}
+
+<div id="messageform">
+
+    @using (Html.BeginForm("Update", "Banners", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "frmBanner", onsubmit = "validateForm(event)" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.id)
+
+        <div style="height: 15px"></div>
+
+        <div class="form-group">
+            <div class="col-12">
+                <table class="table table-striped table-bordered table-diretoria col-6">
+
+                    @if (ViewBag.DirRegional != null && ViewBag.DirRegional.GetType().Name == "List`1")
+                    {
+                        @Html.Raw(@"<tbody>");
+
+                        var firstHalf = (ViewBag.DirRegional.Count / 2);
+                        var lastHalf = (ViewBag.DirRegional.Count - firstHalf);
+
+                        for (int i = 0; i < lastHalf; i++)
+                        {
+                            if (lastHalf == firstHalf)
+                            {
+                                @Html.Raw(string.Format(@"<tr>
+                                                            <td width='50%'>
+                                                                <input type='checkbox' id='{0}' class='inpDir' />
+                                                                <label for='{0}'>{1}</label>
+                                                            </td>
+                                                            <td width='50%'>
+                                                                <input type='checkbox' id='{2}' class='inpDir' />
+                                                                <label for='{2}'>{3}</label>
+                                                            </td>
+                                                        </tr>", ViewBag.DirRegional[i].id, ViewBag.DirRegional[i].diretoria, ViewBag.DirRegional[firstHalf + i].id, ViewBag.DirRegional[firstHalf + i].diretoria));
+                            }
+                            else
+                            {
+                                if ((i + 1) == lastHalf)
+                                {
+                                    @Html.Raw(string.Format(@"<tr>
+                                                            <td width='50%'>
+                                                                <input type='checkbox' id='{0}' class='inpDir' />
+                                                                <label for='{0}'>{1}</label>
+                                                            </td>
+                                                            <td width='50%'>
+                                                            </td>
+                                                        </tr>", ViewBag.DirRegional[i].id, ViewBag.DirRegional[i].diretoria));
+                                }
+                                else
+                                {
+                                    @Html.Raw(string.Format(@"<tr>
+                                                            <td width='50%'>
+                                                                <input type='checkbox' id='{0}' class='inpDir' />
+                                                                <label for='{0}'>{1}</label>
+                                                            </td>
+                                                            <td width='50%'>
+                                                                <input type='checkbox' id='{2}' class='inpDir' />
+                                                                <label for='{2}'>{3}</label>
+                                                            </td>
+                                                        </tr>", ViewBag.DirRegional[i].id, ViewBag.DirRegional[i].diretoria, ViewBag.DirRegional[firstHalf + (i + 1)].id, ViewBag.DirRegional[firstHalf + (i + 1)].diretoria));
+                                }
+                            }
+                        }
+
+                        @Html.Raw(@"</tbody>");
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>Nenhuma diretoria foi encontrada.</td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <div class="col-12">
+                
+            </div>
+        </div>
+        
+        
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input').on('ifChanged', function (event) {
+                if (event.target.checked) {
+
+                }
+            });
+        });
+    </script>
+</div>

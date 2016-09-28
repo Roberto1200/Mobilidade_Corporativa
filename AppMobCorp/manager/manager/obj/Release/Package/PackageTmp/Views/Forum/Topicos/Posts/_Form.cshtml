@@ -1,0 +1,35 @@
+@model Manager.Models.Forum_Canal_Topico_Post
+
+@using (Html.BeginForm("UpdatePosts", "Forum", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "formulario1" }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.id_topico)
+    @Html.HiddenFor(model => model.data_inicio)
+    @Html.HiddenFor(model => model.data_edicao)
+    @Html.HiddenFor(model => model.codigo_funcional)
+
+
+
+    <div style="height:15px"></div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Nome</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+
+            @Html.TextBoxFor(model => model.mensagem, new { @class = "form-control input-sm" })
+            @Html.ValidationMessageFor(model => model.mensagem)
+
+
+        </div>
+    </div>
+
+    
+    <div class="form-actions">
+        <button id="Salvar" type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        <a class="btn btn-warning" href="~/Forum/Topicos/Posts/@Model.id_topico">Cancelar</a>
+    </div>
+
+}

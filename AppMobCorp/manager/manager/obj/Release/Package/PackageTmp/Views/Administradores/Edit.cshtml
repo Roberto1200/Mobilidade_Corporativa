@@ -1,0 +1,36 @@
+﻿@model Manager.Models.Administrador
+
+@{
+    
+    ViewBag.Title = "Administradores";
+
+}
+
+    @Html.Partial("../Shared/LayoutLists/_BreadcrumbCRUD")
+
+    @Html.Partial("../Shared/_ValidatorSummaryBox")
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>@ViewBag.Operacao</h5>
+            </div>
+            <div class="widget-content nopadding">
+                
+                
+                @Html.Partial("_Form", Model)
+                 
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@Html.Partial("../Shared/_EditDeleteScript","Administrador")

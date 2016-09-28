@@ -1,0 +1,41 @@
+﻿@model Manager.Models.Lembretes
+
+@{
+    ViewBag.Title = "Detalhes do Lembrete";
+}
+
+@Html.Partial("../Shared/LayoutLists/_Breadcrumb")
+
+<div class="row">
+    <div class="col-12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>Lembrete #@Model.id</h5>
+            </div>
+            <div class="widget-content">
+                <div class="invoice-meta">Detalhes do lembrete</div>
+                <div class="">
+                    <fieldset>
+                        <legend>Lembrete #@Model.id</legend>
+                        <p>
+                            <strong>Regional:</strong> <br />
+                            @Model.Regional.regional
+                        </p>
+                        <p>
+                            <strong>Notificação enviada para:</strong>
+                        </p>
+                        <p>
+                            <strong>Mensagem:</strong><br />
+                            @Model.Mensagem
+                        </p>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("../Shared/_EditDeleteScript", "Lembretes")

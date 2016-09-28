@@ -1,0 +1,173 @@
+﻿@model Manager.Models.Video
+
+
+@using (Html.BeginForm("Update", "Videos", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "frmVideo" }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.size)
+    <div style="height:15px"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Título</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.titulo, new { @class = "form-control input-sm", maxlength = "100" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.titulo)
+        </div>
+    </div>
+
+    if (Model.id != 0)
+    {
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Vídeo Atual</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @*<input type="file" class="form-control input-sm" name="file">*@
+
+                @Html.TextBoxFor(model => model.video, new { @class = "form-control input-sm", @readonly = "readonly", accept = ".mp4,.mov" })
+
+            </div>
+        </div>
+    }
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label" nowarap>Fazer upload de vídeo</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.file2, new { id = "fupload2", type = "file", accept = ".mp4,.mov" })
+            Tamanho do arquivo deve ser no máximo de 20MB e no formato MP4 ou MOVs <br />
+            @Html.ValidationMessageFor(model => model.file2)
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Duração</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.duracao, new { @class = "form-control input-sm time", placeholder = "mm:ss" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.duracao)
+        </div>
+    </div>
+    if (Model.id != 0)
+    {
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Imagem Atual</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.TextBoxFor(model => model.imagem, new { @class = "form-control input-sm", @readonly = "readonly" })
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#fupload").rules("remove", "required");
+                $("#fupload2").rules("remove", "required");
+            });            
+        </script>
+    } 
+    <div class="form-group">
+        <div style="white-space:nowrap"><label class="col-sm-3 col-md-3 col-lg-2 control-label">Fazer upload de imagem</label></div>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @*<input type="file" class="form-control input-sm" name="file">*@
+
+            @Html.TextBoxFor(model => model.file, new { id = "fupload", type = "file", onchange = "PreviewImage()", accept = ".png,.jpg,.jpeg" })
+            O arquivo deve estar na dimensão 640x360 no formato JPG ou PNG <br />
+            @Html.ValidationMessageFor(model => model.file)
+
+
+            <div id="uploadPreview" data-zoom-image='@Url.Content("~/Upload/Videos/"+@Model.imagem)'
+                 style="width:300px;
+                    margin-top:10px; border:2px groove whitesmoke;
+                    background-repeat:no-repeat;
+                    background-position:center; height:150px;
+                    background-size:contain;
+                    background-image:url('@Url.Content("~/Upload/Videos/"+@Model.imagem)')
+
+                        ">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Ativo</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+
+            @Html.CheckBoxFor(model => model.status, new { @class = "icheckbox_flat-blue" })
+
+        </div>
+    </div>
+    <script>
+        $(".thezoom").elevateZoom({ tint: true, tintColour: '#F90', tintOpacity: 0.5, zoomWindowPosition: 16 });
+
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("fupload").files[0]);
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview").style.backgroundImage = 'url(' + oFREvent.target.result + ')';
+
+                var image = new Image();
+                image.src = oFREvent.target.result;
+
+                image.onload = function () {
+                    // access image size here for setting up in validation
+                    $("#fupload").data("img-width", this.width);
+                    $("#fupload").data("img-height", this.height);
+                };
+
+            };
+        };
+
+        $(document).ready(function () {
+            /* MASK EDIT */
+            $('.date').mask('00/00/0000');
+            $('.time').mask('00:00');
+            $('.date_time').mask('00/00/0000 00:00:00');
+            $('.cep').mask('00000-000');
+            $('.phone').mask('0000-0000');
+            $('.phone_with_ddd').mask('(00) 0000-0000');
+            $('.phone_us').mask('(000) 000-0000');
+            $('.mixed').mask('AAA 000-S0S');
+            $('.cpf').mask('000.000.000-00', { reverse: true });
+            $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
+            $('.money').mask('000.000.000.000.000,00', { reverse: true });
+            $('.money2').mask("#.##0,00", { reverse: true });
+
+            $("#fupload").rules("add", {
+                imgdimension: [640, 360],
+                accept: ".png,.jpg,.jpeg",
+            });
+
+            $("#fupload2").rules("add", {
+                filesize: 20,
+                accept: ".mp4,.mov" /*,
+                messages: {
+                    filesize: "O vídeo não deve ser maior a 20 MB"
+                }*/
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function showClientError(message) {
+            var $div = $('.validation-summary-errors');
+            if ($div.length == 0) {
+                $div = $('<div class="validation-summary-errors">');
+                $div.html('<ul></ul>');
+                // Put the $div somewhere
+                $div.appendTo($('#myForm'));
+            }
+            $div.find('ul').append($('<li>').text(message));
+        }
+
+    </script>
+
+
+
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        <a class="btn btn-warning" href="~/Videos">Cancelar</a>
+    </div>
+}

@@ -1,0 +1,75 @@
+﻿@model Manager.Models.CanaisDigitais
+
+@using (Html.BeginForm("Update", "CanaisDigitais", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "formulario1" }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    if (Model.id > 0)
+    {
+        @Html.HiddenFor(model => model.imagem_banner)
+        <script>
+            $(document).ready(function () {
+                $("#fupload").rules("remove", "required");
+            });
+        </script>
+    }
+
+
+
+    <div style="height:15px"></div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Nome</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @*@Html.TextBoxFor(model=>model.txttipo,new { @class="form-control input-sm"})*@
+
+            @Html.TextBoxFor(model => model.nome, new { @class = "form-control input-sm", maxlength = "50" })
+            @Html.ValidationMessageFor(model => model.nome)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div style="white-space:nowrap"><label class="col-sm-3 col-md-3 col-lg-2 control-label">Fazer upload de imagem</label></div>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @*<input type="file" class="form-control input-sm" name="file">*@
+
+            @Html.TextBoxFor(model => model.file, new { id = "fupload", type = "file", onchange = "PreviewImage()", accept = ".png,.jpg,.jpeg" })
+            O arquivo deve estar na dimensão 2048x739 no formato JPG ou PNG<br>
+            @Html.ValidationMessageFor(model => model.file)
+            <div id="uploadPreview" data-zoom-image='@Url.Content("~/Upload/Banners/"+@Model.imagem_banner)'
+                 style="width:300px;
+                    margin-top:10px; border:2px groove whitesmoke;
+                    background-repeat:no-repeat;
+                    background-position:center; height:150px;
+                    background-size:contain;
+                    background-image:url('@Url.Content("~/Upload/Banners/"+@Model.imagem_banner)')">
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button id="Salvar" type="submit" class="btn btn-primary btn-sm">Salvar</button>
+
+        <a class="btn btn-warning" href="~/CanaisDigitais">Cancelar</a>
+    </div>
+    <script>
+
+        $(".thezoom").elevateZoom({ tint: true, tintColour: '#F90', tintOpacity: 0.5, zoomWindowPosition: 16 });
+
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("fupload").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+
+                document.getElementById("uploadPreview").style.backgroundImage = 'url(' + oFREvent.target.result + ')';
+
+
+            };
+
+        };
+
+    </script>
+}

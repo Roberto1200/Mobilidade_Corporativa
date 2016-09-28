@@ -1,0 +1,34 @@
+﻿@model Manager.Models.AgendaTipo
+@{
+    Html.EnableClientValidation(true);
+}
+
+<div id="messageform">
+
+    @using (Html.BeginForm("UpdateTipos", "Agenda", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "frmBanner", onsubmit = "validateForm(event)" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.id)
+
+        <div style="height: 15px"></div>
+
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Nome</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.TextBoxFor(model => model.tipo, new { @class = "form-control input-sm" })
+            </div>
+            <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                @Html.ValidationMessageFor(model => model.tipo)
+            </div>
+        </div>
+
+        <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                <a class="btn btn-warning" href="~/Agenda/Tipos">Cancelar</a>
+            </div>
+    }
+
+</div>

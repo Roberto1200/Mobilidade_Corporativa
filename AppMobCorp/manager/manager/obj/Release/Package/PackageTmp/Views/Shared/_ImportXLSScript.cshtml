@@ -1,0 +1,71 @@
+﻿@model string
+
+<script>
+
+    function ImportXLS() {
+
+        var html_content = $("#browse_xls_area").html()
+                                                .replace("frmImportExcelBase", "frmImportExcel")
+                                                .replace("optUserTypeBase", "optUserType");
+        bootbox.dialog({
+            message: html_content,
+            title: "Importar Excel",
+            buttons: {
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-default'
+                },
+                confirm: {
+                    label: 'Upload',
+                    className: 'btn-success',
+                    callback: function() {
+
+                        var formImport = $("#frmImportExcel");
+
+                        if (!formImport.valid()) {
+                            return false;
+                        }
+                        formImport.submit();
+                    }
+                },
+            }
+        });
+
+        $("#optUserType").select2();
+
+        //Excel validation
+
+        $("#frmImportExcel").validate({
+
+            rules: {
+                excelFile: {
+                    required: true,
+                    accept: ".xls|.xlsx"
+                }
+            },
+            messages:{
+                excelFile: {
+                    required: "Arquivo para Upload é requerido",
+                    accept: "Extensão de arquivo não válida"
+                }
+            }
+        });
+
+        
+    }
+
+    function ExportXLS() {
+
+        var strFilter = document.getElementById("procura").value;
+        var queryString = "";
+
+        if (strFilter !== undefined && strFilter !== "") {
+            queryString = "?excelFilter=" + strFilter;
+        }
+
+
+        window.location.href = "@Url.Content(string.Format("~/{0}/ExportarExcel/", string.Concat(Model.TakeWhile( c => c != ',') ) ) )" + queryString;
+    }
+
+
+</script>

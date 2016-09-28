@@ -1,0 +1,134 @@
+﻿@model Manager.Models.BannerHome
+@{
+
+    List<Manager.Models.BannerTipoApp> listItems = (List<Manager.Models.BannerTipoApp>)ViewBag.BannerTipoApp;
+    Html.EnableClientValidation(true);
+}
+
+<div id="messageform">
+
+    @using (Html.BeginForm("Update", "Banners", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "frmBanner", onsubmit = "validateForm(event)" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.imagem)
+        @Html.HiddenFor(model => model.size)
+
+        <div style="height: 15px"></div>
+
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Tipo Aplicativo</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.DropDownListFor(model => model.id_tipo_app, new SelectList(listItems, "id", "tipo_app"), new { @class = "selectme", id = "id_tipo_app" })                
+            </div>
+            <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                @Html.ValidationMessageFor(model => model.id_tipo_app)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Título</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.TextBoxFor(model => model.titulo, new { @class = "form-control input-sm", maxlength = "50" })
+            </div>
+            <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                @Html.ValidationMessageFor(model => model.titulo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Texto</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.TextBoxFor(model => model.texto, new { @class = "form-control input-sm" })
+            </div>
+            <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                @Html.ValidationMessageFor(model => model.texto)
+            </div>
+        </div>
+
+        if (Model.id != 0)
+        {
+            <div class="form-group">
+                <label class="col-sm-3 col-md-3 col-lg-2 control-label">Arquivo Atual</label>
+                <div class="col-sm-9 col-md-9 col-lg-10">
+                    @Html.TextBoxFor(model => model.imagem, new { @class = "form-control input-sm", @readonly = "readonly", id = "arquivo_atual" })
+
+                </div>
+                <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                    @Html.ValidationMessageFor(model => model.imagem)
+                </div>
+            </div>
+            
+            <script>
+                $(document).ready(function () {
+                    $("#fupload").rules("remove", "required");
+                });
+            </script>
+        }
+
+
+        <div class="form-group">
+            
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label" style="white-space:nowrap">Fazer upload de imagem</label>
+            
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @* <input type="file" class="form-control input-sm" name="file">*@
+                @Html.TextBoxFor(model => model.file, new { id = "fupload", type = "file", accept = "image/jpeg,image/png,jpg|png" })
+                O arquivo deve estar na dimensão 2048x867 no formato JPG ou PNG
+
+                <script>
+                    $(document).ready(function () {
+                        $("#fupload").rules("add", {
+                            filesize: 10,
+                            imgdimension: [2048, 867]
+                        });
+                    });
+                </script>
+                
+                @if (@Model.imagem != null)
+                {
+                    <div id="uploadPreview" data-zoom-image='@Url.Content("~/Upload/Banners/" + @Model.imagem)'
+                         style="width:300px;
+                                margin-top:10px; border:2px groove whitesmoke;
+                                background-repeat:no-repeat;
+                                background-position:center; height:150px;
+                                background-size:contain;
+                                background-image:url('@Url.Content("~/Upload/Banners/" + @Model.imagem)' )
+                         ">
+                    </div>
+                }
+                else
+                {
+                    <div id="uploadPreview" data-zoom-image=""
+                         style="width:300px;
+                                margin-top:10px; border:2px groove whitesmoke;
+                                background-repeat:no-repeat;
+                                background-position:center; height:150px;
+                                background-size:contain;
+                                background-image:url()
+                         ">
+                    </div>
+                }
+
+                @Html.ValidationMessageFor(model => model.file)
+
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Ativo</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.CheckBoxFor(model => model.status, new { @class = "icheckbox_flat-blue" })
+            </div>
+        </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                <a class="btn btn-warning" href="~/Banners">Cancelar</a>
+            </div>
+    }
+
+</div>

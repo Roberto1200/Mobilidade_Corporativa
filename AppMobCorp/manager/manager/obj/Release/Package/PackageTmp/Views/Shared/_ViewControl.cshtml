@@ -1,0 +1,35 @@
+﻿@model string
+@{
+    string[] contagem = Model.Split(',');
+    string[] verificar = new string[3];
+    int i = 0;
+    foreach (string texto in contagem)
+    {
+        verificar[i] = texto;
+        i++;
+    }
+    if (verificar[1] == "Cat")
+    {
+        <button class="btn btn-primary btn-sm" onclick="Conteudo(@verificar[0])">
+            <i class="fa fa-eye"></i> Visualizar
+        </button>
+    }
+    else if (verificar[1] == "Sub")
+    {
+        <button class="btn btn-primary btn-sm" onclick="Subcategoria(@verificar[0])">
+            <i class="fa fa-eye"></i> Visualizar
+        </button>
+    }
+    else if (verificar[1] == "ForumCanal")
+    {
+        <button class="btn btn-primary btn-sm" onclick="Topicos(@verificar[0])">
+            <i class="fa fa-eye"></i> Visualizar
+        </button>
+    }
+    else if (verificar[1] == "Topicos")
+    {
+        <button class="btn btn-primary btn-sm" onclick="Posts(@verificar[0])">
+            <i class="fa fa-eye"></i> Visualizar
+        </button>
+    }
+}

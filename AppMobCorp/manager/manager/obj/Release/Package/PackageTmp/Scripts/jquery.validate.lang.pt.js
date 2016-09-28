@@ -1,0 +1,22 @@
+﻿jQuery.extend(jQuery.validator.messages, {
+    required: "Este campo é obrigatório.",
+    remote: "Por favor arrume este campo.",
+    email: "Por favor insira um e-mail válido.",
+    url: "Por favor insira uma URL válida.",
+    date: "Por favor insira uma data válida.",
+    dateISO: "Por favor insira uma data válida (ISO).",
+    number: "Por favor insira um número válido.",
+    digits: "Por favor insira somente dígitos.",
+    creditcard: "Por favor insira um cartão de crédito válido.",
+    equalTo: "Por favor insira de novo um valor igual.",
+    accept: "Extensão de arquivo inválida.",
+    maxlength: jQuery.validator.format("Por favor insira no máximo {0} caracteres."),
+    minlength: jQuery.validator.format("Por favor insira no mínimo {0} caracteres."),
+    rangelength: jQuery.validator.format("Por favor insira um valor entre {0} e {1} caracteres."),
+    range: jQuery.validator.format("Por favor insira um valor entre {0} e {1}."),
+    max: jQuery.validator.format("Por favor insira um valor menor ou igual a {0}."),
+    min: jQuery.validator.format("Por favor insira um valor maior ou igual a {0}."),
+    min: jQuery.validator.format("Por favor insira um valor maior ou igual a {0}."),
+    filesize: jQuery.validator.format("Selecione um arquivo menor ou igual a {0} MB."),
+    imgdimension: jQuery.validator.format("Dimensão de imagem inválida. A imagem selecionada deve ser de {0}x{1}.")
+});

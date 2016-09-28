@@ -1,0 +1,101 @@
+﻿@using Manager.Models
+@model PagedList.IPagedList<CanaisDitais_subcat_conteudo>
+@{
+    ViewBag.Title = "Conteúdo";
+    string pai = Url.RequestContext.RouteData.Values["id"].ToString();
+    Manager.Repository.CanaisDigitaisRepository Repo = new Manager.Repository.CanaisDigitaisRepository();
+    string nome = Repo.LoadCategorias(Convert.ToInt32(pai)).nome;
+    int id_canal = Repo.LoadCategorias(Convert.ToInt32(pai)).id_canal_digital;
+    string nome_canal = Repo.LoadCanais(id_canal).nome;
+}
+
+
+<div id="content-header">
+    <h1>@nome</h1>
+</div>
+
+<div id="breadcrumb">
+    <a href="~/Home" title="Ir para página inicial" class="tip-bottom"><i class="glyphicon glyphicon-home"></i>Home</a>
+    <a href="~/CanaisDigitais">Canais Digitais (@nome_canal)</a>
+    <a href="~/CanaisDigitais/Subcategoria/@id_canal">Subcategoria (@nome)</a>
+    <a href="~/CanaisDigitais/Subcategoria/Conteudo/@pai" class="current">@ViewBag.Title</a>
+
+</div>
+
+
+
+
+
+<div class="row">
+    <div class="col-12">
+
+        <button style="margin-bottom:6px; margin-top:6px; float:right; padding-left:4px; padding-right:4px;" class="btn btn-success btn-sm" onclick="EditarCont(0,@pai)">
+            <i class="fa fa-edit"></i> Inserir Registro
+        </button>
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>Lista de registros cadastrados</h5>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("Subcategoria/Conteudo/"+pai, "CanaisDigitais", FormMethod.Get))
+                {
+
+                    @Html.TextBox("procura", ViewBag.CurrentFilter as string, new { @class = "glyphicon glyphicon-search" })
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+
+                }
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Banner</th>
+                            <th>Conteudo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var row in Model)
+                            {
+                                <tr class="gradeX">
+                                    <td>@string.Format("{0}{1}", row.nome.Substring(0, Math.Min(@row.nome.Length, 47)), (@row.nome.Length >= 47 ? "..." : null))</td>
+                                    <td id="uploadPreview" data-zoom-image='@Url.Content("~/Upload/Banners/"+@row.banner)'
+                                        style="width:150px;
+                                        background-repeat:no-repeat;
+                                        background-position:center; height:50px;
+                                        background-size:contain;
+                                        background-image:url('@Url.Content("~/Upload/Banners/"+@row.banner)')"></td>
+                                    <td>@string.Format("{0}{1}", row.conteudo.Substring(0, Math.Min(@row.conteudo.Length, 47)), (@row.conteudo.Length >= 47 ? "..." : null))</td>
+                                    <td>@Html.Partial("../Shared/_EditDeleteControl", row.id.ToString() + "," + row.id_subcat + ",Cont")</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr class="gradeX">
+                                <td colspan="7" align="center">
+                                    Nenhum registro disponível
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (Model.PageCount > 1)
+                {
+                    <div>
+                        @Html.PagedListPager(Model, pagina => Url.Action("Subcategoria/Conteudo/" + pai, "CanaisDigitais", new { pagina, currentFilter = ViewBag.CurrentFilter }))
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("../Shared/_EditDeleteScript", "CanaisDigitais,Cont")

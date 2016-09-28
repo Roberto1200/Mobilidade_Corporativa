@@ -1,0 +1,92 @@
+﻿<script type="text/javascript" src='@Url.Content("~/Scripts/nicEdit-latest.js")'></script>
+<script type="text/javascript">
+ bkLib.onDomLoaded(function(){ nicEditors.allTextAreas() });
+</script>
+@model Manager.Models.CanaisDitais_subcat_conteudo
+
+@using (Html.BeginForm("UpdateCont", "CanaisDigitais", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "formulario1" }))
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    @Html.HiddenFor(model=>model.id)
+    @Html.HiddenFor(model => model.id_subcat)
+    @Html.HiddenFor(model=> model.banner)
+
+
+
+
+    <div style="height:15px"></div>
+    
+    
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Nome</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">            
+                                
+            @Html.EditorFor(model => model.nome, new { maxlenght = "50" })
+            @Html.ValidationMessageFor(model => model.nome)
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Conteúdo</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">            
+                                
+            @Html.TextAreaFor(model=>model.conteudo)
+            @Html.ValidationMessageFor(model => model.conteudo)
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div style="white-space:nowrap"><label class="col-sm-3 col-md-3 col-lg-2 control-label">Fazer upload de imagem</label></div>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @*<input type="file" class="form-control input-sm" name="file">*@
+
+            @Html.TextBoxFor(model => model.file, new { id = "fupload", type = "file", onchange = "PreviewImage()", accept = ".png,.jpg,.jpeg" })
+            O arquivo deve estar na dimensão 640x360 no formato JPG ou PNG<br>
+            @Html.ValidationMessageFor(model => model.file)
+            <div id="uploadPreview" data-zoom-image='@Url.Content("~/Upload/Banners/"+@Model.banner)'
+                 style="width:300px;
+                    margin-top:10px; border:2px groove whitesmoke;
+                    background-repeat:no-repeat;
+                    background-position:center; height:150px;
+                    background-size:contain;
+                    background-image:url('@Url.Content("~/Upload/Banners/"+@Model.banner)')">
+            </div>
+        </div>
+    </div>
+
+     <div class="form-actions">
+        <button id="Salvar" type="submit" class="btn btn-primary btn-sm">Salvar</button>
+
+         <a class="btn btn-warning" href="~/CanaisDigitais/Subcategoria/Conteudo/@Model.id_subcat">Cancelar</a>
+    </div>
+    <script>
+
+        $(".thezoom").elevateZoom({ tint: true, tintColour: '#F90', tintOpacity: 0.5, zoomWindowPosition: 16 });
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("fupload").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+
+            document.getElementById("uploadPreview").style.backgroundImage = 'url(' + oFREvent.target.result + ')';
+
+
+        };
+
+    };
+
+    $(document).ready(function () {
+        $("#fupload").rules("add", {
+            filesize: 10,
+            imgdimension: [640, 360]
+        });
+    });
+    
+
+    </script>
+}

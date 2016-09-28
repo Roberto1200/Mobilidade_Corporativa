@@ -1,0 +1,272 @@
+﻿@model Manager.Models.Usuario
+@{
+
+    List<Manager.Models.UsuarioTipo> listItems = (List<Manager.Models.UsuarioTipo>)ViewBag.UsuarioTipoList;
+
+    List<Manager.Models.Diretoria> listdiretorias = (List<Manager.Models.Diretoria>)ViewBag.Diretorias;
+
+    List<Manager.Models.Regional> listregionais = (List<Manager.Models.Regional>)ViewBag.Regionais;
+
+
+    string classunique = "block";
+    string classmultiple = "none";
+
+    if (Model.tipo == 2)
+    {
+        classunique = "none";
+        classmultiple = "block";
+    }
+}
+@using (Html.BeginForm("Update", "Usuarios", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "frmUsuario" }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.id, new { id = "id"})
+
+
+    <div style="height:15px"></div>
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Tipo</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.DropDownListFor(model => model.tipo, new SelectList(listItems, "id", "tipo"), new { @class = "selectme", id = "sletipo", onchange = "ChangeType()" })
+            @Html.ValidationMessageFor(model => model.tipo)
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.tipo)
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Código Funcional</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.codfuncional, new { @class = "form-control input-sm", maxlength = "8", mask = "99999999" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.codfuncional)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Nome</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.nome, new { @class = "form-control input-sm", maxlength = "40" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.nome)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">E-Mail</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control input-sm", maxlength = "40" })
+
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+    </div>
+
+    <div class="form-group" id="groupDiretoria" style="display:@classunique">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Diretoria</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.DropDownListFor(model => model.diretoria, new SelectList(listdiretorias, "id", "diretoria"), string.Empty, new { @class = "selectme" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.diretoria)
+        </div>
+    </div>
+
+
+
+    <div class="form-group" style="display:@classunique" id="divunique">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Regional</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @*Model.unique_regional = 0*@
+            @Html.DropDownListFor(model => model.unique_regional, new SelectList(listregionais, "id", "regional"), string.Empty, new { @class = "selectme" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.unique_regional)
+        </div>
+    </div>
+
+
+
+    <div class="form-group" style="display:@classmultiple" id="divmultiple">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Diretorias - Regionais</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            <select multiple id="e1" name="idregional" style="width:80%" class="selectme">
+                @Html.Raw(@ViewBag.RegionaisList)
+            </select>
+            <script>
+                $(document).ready(function () {
+                    $("#e1").rules("add", {
+                        required: true,
+                        messages: {
+                            required: "Lista de \"Diretorias - Regionais\" não pode estar vazío"
+                        }
+                    });
+                });
+            </script>
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.idregional)
+        </div>
+    </div>
+
+    <script>
+        $("#diretoria").on("change", function (e) {
+
+            var id = $(this).val();
+
+            $.ajax({
+                url: '@Url.Content("~/WS/GetRegionais")',
+                data: {
+                    'idDiretoria': id
+                },
+                beforeSend: function (xhr) {
+                    $("#e1 option").remove();
+                    $("#unique_regional option").remove();
+                },
+                success: function (regionaisList) {
+
+                    $.each(regionaisList, function (i, element) {
+
+                        $('<option></option>').
+                            text(element.diretoria + ' - ' + element.regional).
+                            val(element.id).
+                            appendTo('#e1');
+
+                        $('<option></option>').
+                            text(element.regional).
+                            val(element.id).
+                            appendTo('#unique_regional');
+                    });
+
+                    $("#e1").trigger("change");
+                    $("#unique_regional").trigger("change");
+
+                    $("#unique_regional").valid();
+
+
+                },
+                error: function (req, status, err) {
+                    console.log('something went wrong', status, err);
+                }
+            });
+        });
+
+
+    </script>
+
+    @Html.TextBoxFor(model => model.avatar, new { @class = "form-control input-sm", style = "display:none" })
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Fone Celular</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.fonecelular, new { @class = "form-control input-sm", mask = "(99) 99999-9999", id = "fonecelular" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.fonecelular)
+        </div>
+    </div>
+
+
+    @*<div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Junção</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.juncao, new { @class = "form-control input-sm" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.juncao)
+        </div>
+    </div>*@
+
+    @*
+        <div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Usuário</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.TextBoxFor(model=>model.usuario,new { @class="form-control input-sm"})
+                @Html.ValidationMessageFor(model => model.usuario)
+            </div>
+            <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+             @Html.ValidationMessageFor(model => model.idregional)
+         </div>
+        </div>
+    *@
+
+    @*<div class="form-group">
+            <label class="col-sm-3 col-md-3 col-lg-2 control-label">Senha</label>
+            <div class="col-sm-9 col-md-9 col-lg-10">
+                @Html.TextBoxFor(model => model.senha, new { @class = "form-control input-sm", type = "password" })
+            </div>
+            <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                @Html.ValidationMessageFor(model => model.senha)
+            </div>
+        </div>*@
+
+if (!string.IsNullOrWhiteSpace(Model.avatar))
+{
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Foto Perfil</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            <div id="uploadPreview" data-zoom-image='@Url.Content("~/Upload/Avatar/"+@Model.avatar)'
+                 style="width:300px;
+                    margin-top:10px;
+                    background-repeat:no-repeat;
+                    background-position:center; height:150px;
+                    background-size:contain;
+                    background-image:url('@Url.Content("~/Upload/Avatar/"+@Model.avatar)');
+                    background-size: 150px;">
+
+
+            </div>
+        </div>
+    </div>
+}
+    <div class="form-actions">
+        <button id="Salvar" type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        @if (Model.id > 0 && !Model.primeiroacesso)
+        {
+            <button id="RevAcesso" type="submit" class="btn btn-info">Revogar primeiro acesso</button>
+        }
+
+        <a class="btn btn-warning" href="~/Usuarios">Cancelar</a>
+    </div>
+
+    <script type="text/javascript">
+
+        function ChangeType() {
+            var d = $('#sletipo').val();
+
+            if (d == 2) {
+
+                $('#divmultiple').css('display', 'block');
+                $('#divunique').css('display', 'none');
+                $('#groupDiretoria').css('display', 'none');
+            }
+            else {
+                $('#divmultiple').css('display', 'none');
+                $('#divunique').css('display', 'block');
+                $('#groupDiretoria').css('display', 'block');
+
+            }
+        }
+
+        $("#Salvar").click(function () {
+            var form = $("form#frmUsuario");
+            form.attr("action", "@Url.Action("Update","Usuarios")");
+            form.submit();
+        });
+
+        $("#RevAcesso").click(function () {
+            var form = $("form#frmUsuario");
+            form.attr("action", "@Url.Action("RevPrimeiro", "Usuarios")");
+            form.validate().settings.ignore = "*";
+            form.submit();
+        });
+    </script>
+}

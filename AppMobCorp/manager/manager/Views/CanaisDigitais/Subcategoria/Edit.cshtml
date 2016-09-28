@@ -1,0 +1,50 @@
+﻿@model Manager.Models.CanaisDigitais_Subcat
+@{
+    string pai = Url.RequestContext.RouteData.Values["idp"].ToString();
+    Manager.Repository.CanaisDigitaisRepository Repo = new Manager.Repository.CanaisDigitaisRepository();
+    string nome = Repo.LoadCanais(Convert.ToInt32(pai)).nome;
+}
+
+@{
+
+    ViewBag.Title = "Subcategoria";
+}
+
+
+    <div id="content-header">
+        <h1>@ViewBag.Title</h1>
+       
+    </div>
+
+    <div id="breadcrumb">
+        <a href="~/Home" title="Ir para página inicial" class="tip-bottom"><i class="glyphicon glyphicon-home"></i>Home</a>
+        <a href="~/CanaisDigitais">Canais Digitais</a>
+        <a href="~/CanaisDigitais/Subcategoria/@pai">@ViewBag.Title (@nome)</a>
+        <a href="~/CanaisDigitais/Subcategoria/@Model.id" class="current">@Model.nome</a>
+    </div>
+
+@Html.Partial("../Shared/_ValidatorSummaryBox")
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>@ViewBag.Operacao</h5>
+            </div>
+            <div class="widget-content nopadding">
+                
+                @Html.Partial("Subcategoria/_Form",Model)
+                 
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@Html.Partial("../Shared/_EditDeleteScript", "CanaisDigitais,Cat")

@@ -1,0 +1,112 @@
+﻿@using Manager.Models
+@model PagedList.IPagedList<CanaisDigitais_Subcat>
+@{
+    ViewBag.Title = "Subcategoria";
+    string pai = Url.RequestContext.RouteData.Values["id"].ToString();
+    Manager.Repository.CanaisDigitaisRepository Repo = new Manager.Repository.CanaisDigitaisRepository();
+    string nome = Repo.LoadCanais(Convert.ToInt32(pai)).nome;
+}
+@{
+    List<Manager.Models.CanaisDicionarioP> Tipodepagina = new List<Manager.Models.CanaisDicionarioP>();
+    Tipodepagina.Add(new Manager.Models.CanaisDicionarioP() { id = 1, nome = "Pagina com submenus" });
+    Tipodepagina.Add(new Manager.Models.CanaisDicionarioP() { id = 2, nome = "Pagina sem submenus" });
+    Tipodepagina.Add(new Manager.Models.CanaisDicionarioP() { id = 3, nome = "Pagina html" });
+
+    List<Manager.Models.CanaisDicionarioB> Tipobanners = new List<Manager.Models.CanaisDicionarioB>();
+    Tipobanners.Add(new Manager.Models.CanaisDicionarioB() { id = 1, nome = "Pequeno Horizontal" });
+    Tipobanners.Add(new Manager.Models.CanaisDicionarioB() { id = 2, nome = "Grande Quadrado" });
+    Tipobanners.Add(new Manager.Models.CanaisDicionarioB() { id = 3, nome = "Grande Horizontal" });
+}
+
+<div id="content-header">
+    <h1>@nome</h1>
+</div>
+
+<div id="breadcrumb">
+    <a href="~/Home" title="Ir para página inicial" class="tip-bottom"><i class="glyphicon glyphicon-home"></i>Home</a>
+    <a href="~/CanaisDigitais">Canais Digitais (@nome)</a>
+    <a href="~/CanaisDigitais/Subcategoria/@pai" class="current">@ViewBag.Title</a>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+
+        <button style="margin-bottom:6px; margin-top:6px; float:right; padding-left:4px; padding-right:4px;" class="btn btn-success btn-sm" onclick="EditarCat(0,@pai)">
+            <i class="fa fa-edit"></i> Inserir Registro
+        </button>
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>Lista de registros cadastrados</h5>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("Subcategoria/"+pai, "CanaisDigitais", FormMethod.Get))
+                {
+
+                    @Html.TextBox("procura", ViewBag.CurrentFilter as string, new { @class = "glyphicon glyphicon-search" })
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+
+                }
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Chamada</th>
+                            <th>Imagem</th>
+                            <th>Tipo de banner</th>
+                            <th>Tipo de página</th>
+                            <th>Data de criação</th>
+                            <th>Quantidade</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var row in Model)
+                            {
+                                <tr class="gradeX">
+                                    <td>@string.Format("{0}{1}", row.nome.Substring(0, Math.Min(@row.nome.Length, 47)), (@row.nome.Length >= 47 ? "..." : null))</td>
+                                    <td>@string.Format("{0}{1}", row.chamada.Substring(0, Math.Min(@row.chamada.Length, 47)), (@row.chamada.Length >= 47 ? "..." : null))</td>
+                                    <td id="uploadPreview" data-zoom-image='@Url.Content("~/Upload/Banners/" + @row.imagem)'
+                                        style="width:150px;
+                                        background-repeat:no-repeat;
+                                        background-position:center; height:50px;
+                                        background-size:contain;
+                                        background-image:url('@Url.Content("~/Upload/Banners/" + @row.imagem)')"></td>
+                                    <td>@Tipobanners.FirstOrDefault(p => p.id == @row.id_tipo_banner_destaque).nome</td>
+                                    <td>@Tipodepagina.FirstOrDefault(p => p.id == @row.id_tipo_pagina).nome</td>
+                                    <td>@row.data_criacao</td>
+                                    <td>@row.quantidade &nbsp; &nbsp; @Html.Partial("../Shared/_ViewControl", row.id.ToString() + ",Cat,0")</td>
+                                    <td>@Html.Partial("../Shared/_EditDeleteControl", row.id.ToString() + "," + row.id_canal_digital + ",Cat")</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr class="gradeX">
+                                <td colspan="7" align="center">
+                                    Nenhum registro disponível
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (Model.PageCount > 1)
+                {
+                    <div>
+                        @Html.PagedListPager(Model, pagina => Url.Action("Subcategoria/" + pai, "CanaisDigitais", new { pagina, currentFilter = ViewBag.CurrentFilter }))
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("../Shared/_EditDeleteScript", "CanaisDigitais,Cat")

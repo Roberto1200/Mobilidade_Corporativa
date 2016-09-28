@@ -1,0 +1,51 @@
+﻿@model Manager.Models.AgendaTipo
+
+@{
+
+    ViewBag.Title = "Agenda - Tipo de Itens";
+}
+
+
+    <div id="content-header">
+        <h1>@ViewBag.Title</h1>
+       
+    </div>
+
+    <div id="breadcrumb">
+        <a href="~/Home" title="Ir para página inicial" class="tip-bottom"><i class="glyphicon glyphicon-home"></i>Home</a>
+        <a href="~/Agenda" title="Ir para página agenda" class="current">Agenda</a>
+        <a href="~/Agenda/Tipos" title="Ir para página agenda - tipos de itens" class="current">Tipos de Itens</a>
+        @if (Model.id > 0)
+        {
+            <a href="~/Agenda/Tipos/Edit/@Model.id" title="Ir para página agenda - tipos de itens" class="current">@Model.tipo</a>
+        }
+        else
+        {
+            <a href="~/Agenda/Tipos/Edit/0" title="Ir para página agenda - tipos de itens" class="current">Novo registro</a>
+        }
+    </div>
+
+@Html.Partial("../Shared/_ValidatorSummaryBox")
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>@ViewBag.Operacao</h5>
+            </div>
+            <div class="widget-content nopadding">
+                
+                @Html.Partial("Tipos/_Form",Model)
+                 
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Partial("../Shared/_EditDeleteScript","Agenda")

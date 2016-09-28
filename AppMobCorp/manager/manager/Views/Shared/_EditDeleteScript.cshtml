@@ -1,0 +1,242 @@
+﻿@model string
+
+<script>
+    /*
+     * Normais
+    */
+    function Editar(id) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+"/Edit/")'+  id;
+    }
+    function excluir(id) {
+        window.location.href = '@Url.Content( "~/"+string.Concat(Model.TakeWhile((c) => c != ','))+"/Delete/")'  + id;
+    }
+
+    /*
+    * Canais digitais
+    */
+    function Subcategoria(id) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+ "/Subcategoria/")' + id;
+    }
+
+    /*
+     * Categoria
+    */
+    function Conteudo(id) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+ "/Subcategoria/Conteudo/")' + id;
+    }
+    function EditarCat(id,idp) {
+        window.location.href = '@Url.Content( "~/" + string.Concat(Model.TakeWhile((c) => c != ',')) + "/Subcategoria/Edit/")' + id+"/"+idp;
+    }
+    function excluirCat(id,idp) {
+        window.location.href = '@Url.Content( "~/" + string.Concat(Model.TakeWhile((c) => c != ',')) + "/Subcategoria/Delete/")' + id+"/"+idp;
+    }
+    /*
+     * Conteudo
+     */
+    function EditarCont(id,idp) {
+        window.location.href = '@Url.Content( "~/" + string.Concat(Model.TakeWhile((c) => c != ',')) + "/Subcategoria/Conteudo/Edit/")' + id+"/"+idp;
+    }
+    function excluirCont(id,idp) {
+        window.location.href = '@Url.Content( "~/" + string.Concat(Model.TakeWhile((c) => c != ',')) + "/Subcategoria/Conteudo/Delete/")' + id + "/" + idp;
+    }
+    /*
+     * Forum Canal
+     */
+    function Topicos(id) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+ "/Topicos/")' + id;
+    }
+    function EditarForumCanal(id) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+"/Edit/")'+  id;
+    }
+    function excluirCanal(id) {
+        window.location.href = '@Url.Content( "~/" + string.Concat(Model.TakeWhile((c) => c != ',')) + "/Delete/")' + id;
+    }
+    /*
+     * Forum Topicos
+     */
+    function Posts(id) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+ "/Topicos/Posts/")' + id;
+    }
+    function EditarForumTopicos(id,idp) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+"/Topicos/Edit/")' + id + "/" + idp;
+    }
+    function excluirTopicos(id,idp) {
+        window.location.href = '@Url.Content( "~/" + string.Concat(Model.TakeWhile((c) => c != ',')) + "/Topicos/Delete/")' + id + "/" + idp;
+    }
+    /*
+     * Forum Posts
+     */
+    function EditarForumPosts(id, idp) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+"/Topicos/Posts/Edit/")' + id + "/" + idp;
+    }
+    function excluirPosts(id,idp) {
+        window.location.href = '@Url.Content( "~/" + string.Concat(Model.TakeWhile((c) => c != ',')) + "/Topicos/Posts/Delete/")' + id + "/" + idp;
+    }
+    /*
+     * Agenda Tipos Itens
+     */
+    function EditarAgendaTipos(id) {
+        window.location.href = '@Url.Content("~/"+string.Concat(Model.TakeWhile((c) => c != ','))+ "/Tipos/Edit/")' + id;
+    }
+    function excluirAgendaTipos(id) {
+        window.location.href = '@Url.Content( "~/" + string.Concat(Model.TakeWhile((c) => c != ',')) + "/Tipos/Delete/")' + id;
+    }
+    function Confirmar(id) {
+        bootbox.confirm({
+            buttons: {
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-success'
+                },
+                confirm: {
+                    label: 'OK',
+                    className: 'btn-danger'
+                },
+            },
+            message: 'Confirmar exclusão?',
+            callback: function (result) {
+                if (result == true) {
+                    excluir(id);
+                }
+
+            },
+            title: "Atenção",
+        });
+    }
+
+    function ConfirmarCat(id, idp) {
+        bootbox.confirm({
+            buttons: {
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-success'
+                },
+                confirm: {
+                    label: 'OK',
+                    className: 'btn-danger'
+                },
+            },
+            message: 'Confirmar exclusão?',
+            callback: function (result) {
+                if (result == true) {
+                    excluirCat(id,idp);
+                }
+
+            },
+            title: "Atenção",
+        });
+    }
+
+    function ConfirmarCont(id, idp) {
+        bootbox.confirm({
+            buttons: {
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-success'
+                },
+                confirm: {
+                    label: 'OK',
+                    className: 'btn-danger'
+                },
+            },
+            message: 'Confirmar exclusão?',
+            callback: function (result) {
+                if (result == true) {
+                    excluirCont(id, idp);
+                }
+
+            },
+            title: "Atenção",
+        });
+    }
+    function ConfirmarForumCanal(id) {
+        bootbox.confirm({
+            buttons: {
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-success'
+                },
+                confirm: {
+                    label: 'OK',
+                    className: 'btn-danger'
+                },
+            },
+            message: 'Confirmar exclusão?',
+            callback: function (result) {
+                if (result == true) {
+                    excluirCanal(id);
+                }
+
+            },
+            title: "Atenção",
+        });
+    }
+    function ConfirmarForumTopicos(id,idp) {
+        bootbox.confirm({
+            buttons: {
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-success'
+                },
+                confirm: {
+                    label: 'OK',
+                    className: 'btn-danger'
+                },
+            },
+            message: 'Confirmar exclusão?',
+            callback: function (result) {
+                if (result == true) {
+                    excluirTopicos(id,idp);
+                }
+
+            },
+            title: "Atenção",
+        });
+    }
+    function ConfirmarForumPosts(id, idp) {
+        bootbox.confirm({
+            buttons: {
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-success'
+                },
+                confirm: {
+                    label: 'OK',
+                    className: 'btn-danger'
+                },
+            },
+            message: 'Confirmar exclusão?',
+            callback: function (result) {
+                if (result == true) {
+                    excluirPosts(id, idp);
+                }
+
+            },
+            title: "Atenção",
+        });
+    }
+    function ConfirmarAgendaTipos(id) {
+        bootbox.confirm({
+            buttons: {
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-success'
+                },
+                confirm: {
+                    label: 'OK',
+                    className: 'btn-danger'
+                },
+            },
+            message: 'Confirmar exclusão?',
+            callback: function (result) {
+                if (result == true) {
+                    excluirAgendaTipos(id);
+                }
+
+            },
+            title: "Atenção",
+        });
+    }
+
+
+</script>

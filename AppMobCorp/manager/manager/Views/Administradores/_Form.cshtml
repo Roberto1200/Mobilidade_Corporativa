@@ -1,0 +1,49 @@
+﻿@model Manager.Models.Administrador
+
+
+@using (Html.BeginForm("Update", "Administradores", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", id="frmAdministradores" }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.id)
+    <div style="height:15px"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Nome</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.nome, new { @class = "form-control input-sm", maxlength = "40" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.nome)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">E-Mail</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control input-sm", maxlength = "40" })
+            
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 col-md-3 col-lg-2 control-label">@ViewBag.NewPasswordText Senha</label>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            @Html.TextBoxFor(model => model.senha, new { @class = "form-control input-sm", type = "password" })
+        </div>
+        <div class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+            @Html.ValidationMessageFor(model => model.senha)
+        </div>
+    </div>
+
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        <a class="btn btn-warning" href="~/Administradores">Cancelar</a>
+    </div>
+}

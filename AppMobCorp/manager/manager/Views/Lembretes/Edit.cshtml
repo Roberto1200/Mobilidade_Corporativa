@@ -1,0 +1,43 @@
+﻿@model Manager.Models.Lembretes
+
+
+@{
+
+    ViewBag.Title = "Canais Digitais";
+}
+
+
+<div id="content-header">
+    <h1>@ViewBag.Title</h1>
+
+</div>
+
+<div id="breadcrumb">
+    <a href="~/Home" title="Ir para página inicial" class="tip-bottom"><i class="glyphicon glyphicon-home"></i>Home</a>
+    <a href="#" class="current">Canais Digitais</a>
+    <a href="~/CanaisDigitais/Edit/@Model.id" class="current">@ViewBag.Operacao</a>
+</div>
+
+
+@Html.Partial("../Shared/_ValidatorSummaryBox")
+
+<div class="row">
+    <div class="col-12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>@ViewBag.Operacao</h5>
+            </div>
+            <div class="widget-content nopadding">
+
+                @Html.Partial("_Form", Model)
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("../Shared/_EditDeleteScript", "CanaisDigitais")

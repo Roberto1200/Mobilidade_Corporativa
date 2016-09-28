@@ -1,0 +1,135 @@
+﻿@using Manager.Models
+@model PagedList.IPagedList<Usuario>
+@{
+    ViewBag.Title = "Usuários";
+    //List<Manager.Models.Usuario> UsuariosList = (List<Manager.Models.Usuario>)ViewBag.Data;
+}
+
+
+<div id="content-header">
+    <h1>@ViewBag.Title</h1>
+</div>
+
+<div id="breadcrumb">
+    <a href="~/Home" title="Ir para página inicial" class="tip-bottom"><i class="glyphicon glyphicon-home"></i>Home</a>
+    <a href="#" class="current">Usuários</a>
+</div>
+
+
+<div class="row">
+
+    @if (!string.IsNullOrEmpty(ViewBag.ImportedMessage))
+    {
+        <div class="col-12">
+            <div class="alert @ViewBag.ImportedSuccess alert-block" style="margin-top: 20px;">
+                <a href="#" data-dismiss="alert" class="close">×</a>
+                @Html.Raw(ViewBag.ImportedMessage)
+            </div>
+        </div>
+    }
+
+    <div class="col-12">
+
+        <button style="margin-bottom:6px; margin-top:6px; float:right; padding-left:4px; padding-right:4px;" class="btn btn-success btn-sm" onclick="Editar(0)">
+            <i class="fa fa-edit"></i> Inserir Registro
+        </button>
+
+        @Html.Partial("../Shared/_ImportXLSControl", string.Empty)
+
+        <div id="browse_xls_area" class="hide">
+            @using (Html.BeginForm("ImportarExcel", "Usuarios", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmImportExcelBase" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-4" style="margin-top: 8px;">Tipo de Usuário</div>
+                    <div class="col-8" style="margin-top: 8px;">
+                        @{
+                            var listItems = new List<SelectListItem>
+                        {
+                              new SelectListItem { Text = "Agente", Value = "agente" },
+                              new SelectListItem { Text = "Coordenador", Value = "coord" }
+                        };
+                        }
+
+                        @Html.DropDownList("optUserType", new SelectList(listItems, "Value", "Text"), new { id = "optUserTypeBase" })
+                    </div>
+                    <div class="col-12" style="margin-top: 18px;">Selecione Arquivo Excel (xls ou xlsx)</div>
+                    <div class="col-12"><input type="file" id="excelFile" name="excelFile" accept=".xls,.xlsx" /></div>
+
+                    <div class="col-12" style="margin-top:15px">Download dos arquivos de Modelo</div>
+                    <div class="col-6"><a href="~/Upload/Excel/Agentes_Modelo.xlsx">Agentes</a></div>
+                    <div class="col-6"><a href="~/Upload/Excel/Coordenadores_Modelo.xlsx">Coordenadores</a></div>
+
+                </div>
+                            }
+        </div>
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>Lista de registros cadastrados</h5>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("Index", "Usuarios", FormMethod.Get))
+                {
+
+                    @Html.TextBox("procura", ViewBag.CurrentFilter as string, new { @class = "glyphicon glyphicon-search", id = "procura" })
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+
+                }
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            @*<th style="text-align: left;visibility:hidden">ID</th>*@
+                            <th>Cód. Funcional</th>
+                            <th>Nome</th>
+                            <th class="hidden-xs hidden-sm">EMail</th>
+                            <th class="visible-sm visible-md visible-lg">Diretoria</th>
+                            <th class="visible-md visible-lg">Tipo</th>
+                            <th nowrap>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+
+
+                            foreach (var row in Model)
+                            {
+                                <tr class="gradeX">
+                                    <td>@Html.DisplayFor(modelItem => row.codfuncional)</td>
+                                    <td>@Html.DisplayFor(modelItem => row.nome)</td>
+                                    <td class="hidden-xs hidden-sm">@Html.DisplayFor(modelItem => row.email)</td>
+                                    <td class="visible-sm visible-md visible-lg">@Html.DisplayFor(modelItem => row.txtdiretoria)</td>
+                                    <td class="visible-md visible-lg">@Html.DisplayFor(modelItem => row.txttipo)</td>
+                                    <td>@Html.Partial("../Shared/_EditDeleteControl", row.id.ToString() + ",0,0")</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr class="gradeX">
+                                <td colspan="7" align="center">
+                                    Nenhum registro disponível
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (Model.PageCount > 1)
+                {
+                    <div>
+                        @Html.PagedListPager(Model, pagina => Url.Action("Index", "Usuarios", new { pagina, currentFilter = ViewBag.CurrentFilter }))
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("../Shared/_EditDeleteScript", "Usuarios")
+@Html.Partial("../Shared/_ImportXLSScript", "Usuarios")

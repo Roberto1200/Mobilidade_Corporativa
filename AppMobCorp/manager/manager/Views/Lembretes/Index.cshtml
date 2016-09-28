@@ -1,0 +1,109 @@
+﻿@using Manager.Models
+@model PagedList.IPagedList<Lembretes>
+@{
+    ViewBag.Title = "Lembretes";
+}
+
+@Html.Partial("../Shared/LayoutLists/_Breadcrumb")
+
+<div class="row">
+    <div class="col-12">
+
+        @Html.Partial("../Shared/LayoutLists/_InsertRecordButton")
+
+        <div>
+            @if(ViewBag.ErrorMessage != null)
+            {
+                @Html.Raw(ViewBag.ErrorMessage)
+            }
+        </div>
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>Lista de registros cadastrados</h5>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("Index", "Lembretes", FormMethod.Get))
+                {
+
+                    <div class="input-group col-2">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                        @Html.TextBox("data_inicio", ViewBag.DataInicio as string, new { @class = "form-control datepicker", @placeholder = "Data Inicial" })
+                    </div>
+                    <div class="input-group col-2">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                        @Html.TextBox("data_fim", ViewBag.DataFim as string, new { @class = "form-control datepicker", @placeholder = "Data Final" })
+                    </div>
+                    <div class="input-group col-2">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </span>
+                        @Html.DropDownList("regional", ViewBag.Regionais as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                    </div>
+                    <div class="input-group col-4">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </span>
+                        @Html.TextBox("procura", ViewBag.Procura as string, new { @class = "form-control", @placeholder = "Procurar" })
+                    </div>
+
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+                }
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Dir. Regional</th>
+                            <th>Mensagem</th>
+                            <th nowrap width="20%">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var row in Model)
+                            {
+                                <tr class="gradeX">
+                                    <td>@row.Data.ToShortDateString()</td>
+                                    <td>@(row.Regional != null ? row.Regional.regional : "Sem Regional")</td>
+                                    <td>@row.Mensagem</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="@Url.Action("Visualizar", "Lembretes")/@row.id">
+                                            <i class="fa fa-eye"></i> Visualizar
+                                        </a>
+                                        @Html.Partial("../Shared/_DeleteControl", row.id.ToString())
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr class="gradeX">
+                                <td colspan="7" align="center">
+                                    Nenhum registro disponível
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @if (Model.PageCount > 1)
+                {
+                    <div>
+                        @Html.PagedListPager(Model, pagina => Url.Action("Index", "Lembretes", new { pagina, currentFilter = ViewBag.CurrentFilter }))
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("../Shared/_EditDeleteScript", "Lembretes")

@@ -1,0 +1,85 @@
+@model Manager.Models.Forum_Canal_Topico_Post
+@{
+    string pai = Url.RequestContext.RouteData.Values["idp"].ToString();
+    Manager.Repository.ForunsRepository Repo = new Manager.Repository.ForunsRepository();
+    string nome = Repo.LoadTopicos(Convert.ToInt32(pai)).titulo;
+    int id_canal = Repo.LoadTopicos(Convert.ToInt32(pai)).id_canal;
+    string nome_canal = Repo.LoadCanais(id_canal).titulo;
+}
+
+@{
+
+    ViewBag.Title = "Fórum - Posts";
+}
+
+
+<div id="content-header">
+    <h1>@ViewBag.Title</h1>
+
+</div>
+
+<div id="breadcrumb">
+    <a href="~/Home" title="Ir para página inicial" class="tip-bottom"><i class="glyphicon glyphicon-home"></i>Home</a>
+    <a href="~/Forum">Canais Digitais</a>
+    <a href="~/Forum/Topicos/@id_canal">@nome_canal</a>
+    <a href="~/Forum/Topicos/Posts/@pai">@nome</a>
+    @{
+
+        if (Model.id > 0)
+        {
+            <a href="~/Forum/Topicos/Posts/@Model.id" class="current">Edição do post</a>
+        }
+        else
+        {
+            <a href="~/Forum/Topicos/Posts/@Model.id" class="current">Novo Registro</a>
+        }
+    }
+</div>
+
+
+
+<div class="row">
+    <div class="col-12">
+        @{
+            if (Model.id > 0)
+            {
+                <div Class="alert alert-info" style="width:350px;">
+                    Data de Criação: @Model.data_inicio
+                    @if(Model.data_edicao != null || Model.data_edicao != DateTime.MinValue)
+                    {
+                        @Html.Raw("Data de criação: "+Model.data_edicao);
+                    }
+                </div>
+            }
+        }
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-th"></i>
+                </span>
+                <h5>@ViewBag.Operacao</h5>
+            </div>
+            <div class="widget-content nopadding">
+
+                @Html.Partial("Topicos/Posts/_Form", Model)
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    $('.selectme').select2()
+    $('.clsmenu').removeClass('active')
+    $('.mnuusuarios').addClass('active')
+
+</script>
+
+@Html.Partial("../Shared/_EditDeleteScript", "Forum,Posts")
